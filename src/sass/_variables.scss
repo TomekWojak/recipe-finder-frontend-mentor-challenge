@@ -5,7 +5,7 @@ $spacing-075: 0.6rem;
 $spacing-100: 0.8rem;
 $spacing-125: 1rem;
 $spacing-150: 1.2rem;
-$spacing-200: 0.1.6rem;
+$spacing-200: 1.6rem;
 $spacing-250: 2rem;
 $spacing-300: 2.4rem;
 $spacing-400: 3.2rem;
@@ -48,9 +48,19 @@ $neutral0: rgba(255, 255, 255);
 $neutral100: rgb(246, 245, 241);
 $neutral200: rgb(224, 230, 227);
 $neutral300: rgb(208, 220, 217);
-$neutral900: rgb(22, 58, 52);
 $neutral600: rgb(57, 88, 82);
+$neutral800: rgb(57, 88, 82);
+$neutral900: rgb(22, 58, 52);
 
 $orange500: rgba(254, 159, 107);
 $teal500: rgba(73, 172, 155);
 $indigo500: rgba(105, 125, 219);
+
+//font boldness
+
+$normal: 400;
+$medium: 500;
+$semi-bold: 600;
+$bold: 700;
+$extra-bold: 800;
+$black: 900;

@@ -1,18 +1,48 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
   <link rel="icon" type="image/png" sizes="32x32" href="./assets/images/favicon-32x32.png">
-  
   <title>Frontend Mentor | Recipe finder website</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,opsz,wght@0,6..12,200..1000;1,6..12,200..1000&family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="./dist/css/style.min.css">
+  <script src="./dist/js/script.min.js" defer></script>
 </head>
-<body>
 
+<body>
+  <header class="header">
+    <div class="header__content wrapper">
+      <a href="" class="header__logo"><img width="260" height="40" src="./dist/img/logo.svg"
+          alt="Healthy Recipe Finder's logo"></a>
+      <button class="header__toggler" aria-expanded="false" aria-label="Show navigation"
+        aria-controls="mobile-navigation"><img width="18" height="16" src="./dist/img/icon-hamburger-menu.svg"
+          alt=""></button>
+      <nav class="nav">
+        <ul class="nav__links nav__links-mobile" id="mobile-navigation">
+          <li class="nav__links-mobile-li">Home</li>
+          <li class="nav__links-mobile-li">About</li>
+          <li class="nav__links-mobile-li">Recipes</li>
+          <li class="nav__links-mobile-li"><button class="nav__links-mobile-btn">Browse recipes</button></li>
+        </ul>
+
+        <ul class="nav__links nav__links-desktop desktop-visible">
+          <li class="nav__links-desktop-li active" tabindex="0" data-page="home">Home</li>
+          <li class="nav__links-desktop-li" tabindex="0" data-page="about">About</li>
+          <li class="nav__links-desktop-li" tabindex="0" data-page="recipes">Recipes</li>
+        </ul>
+      </nav>
+      <button class="header__btn desktop-visible">Browse recipes</button>
+    </div>
+  </header>
   Healthy meals, zero fuss
 
-  Discover eight quick, whole-food recipes that you can cook 
+  Discover eight quick, whole-food recipes that you can cook
   tonight—no processed junk, no guesswork.
 
   Start exploring
@@ -30,11 +60,11 @@
 
   Built for real life
 
-  Cooking shouldn't be complicated. These recipes come in under 
-  30 minutes of active time, fit busy schedules, and taste good 
-  enough to repeat. 
+  Cooking shouldn't be complicated. These recipes come in under
+  30 minutes of active time, fit busy schedules, and taste good
+  enough to repeat.
 
-  Whether you're new to the kitchen or just need fresh ideas, 
+  Whether you're new to the kitchen or just need fresh ideas,
   we've got you covered.
 
   Ready to cook smarter?
@@ -46,4 +76,5 @@
   Made with ❤️ and 🥑
 
 </body>
+
 </html>
