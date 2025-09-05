@@ -1,0 +1,260 @@
+@use "./variables" as *;
+@use "./mixins" as *;
+
+.home-section {
+	&__top {
+		position: relative;
+	}
+	&__content {
+		padding: $spacing-600 var(--inline-spacing) 0;
+		color: $neutral900;
+	}
+	&__header {
+		position: relative;
+	}
+	&__title {
+		.text-hightlighted {
+			position: relative;
+			z-index: 0;
+
+			&::before {
+				@include orangeUnderline(1rem, 0.4);
+			}
+		}
+	}
+	&__text {
+		margin-block-start: 0.8em;
+		font-size: 2rem;
+		line-height: $lh-150;
+		font-weight: $medium;
+		color: $neutral800;
+
+		.text-bolded {
+			display: inline-block;
+			position: relative;
+			font-weight: $bold;
+		}
+	}
+	&__btn {
+		@include homeBtn;
+
+		&:hover {
+			background-color: $neutral800;
+		}
+	}
+	&__img {
+		display: block;
+		width: 100%;
+		height: auto;
+		margin-block-start: var(--imgMarginTop);
+		border-radius: $radius-4;
+		box-shadow: 0 0 0 3.5px $neutral0;
+	}
+	&__bg {
+		position: absolute;
+		bottom: 0;
+		left: 0;
+		left: 0;
+		width: 100%;
+		height: auto;
+		z-index: -1;
+	}
+	&__subtitle {
+		margin-block-end: 1em;
+	}
+	&__box {
+		display: flex;
+		flex-direction: column;
+		gap: 2rem;
+	}
+	&__box-card:first-of-type img {
+		width: 70%;
+	}
+	&__box-card-icon {
+		display: grid;
+		place-items: center;
+		width: 50px;
+		height: 50px;
+		padding: $spacing-050 $spacing-100;
+		background-color: $neutral0;
+		border-radius: $radius-12;
+		border: 1px solid $neutral200;
+
+		img {
+			width: 100%;
+			height: 100%;
+			object-fit: contain;
+		}
+	}
+	&__box-card-title {
+		margin-block-start: 0.5em;
+		font-size: 3rem;
+		font-weight: $bold;
+		letter-spacing: $ls-2;
+	}
+	&__box-card-text {
+		margin-block-start: 0.5em;
+		color: $neutral800;
+		font-size: 2rem;
+		line-height: $lh-150;
+		font-weight: $medium;
+	}
+	&__divider {
+		display: none;
+	}
+	&__bottom-subtitle {
+		margin: 0;
+	}
+	&__bottom-img {
+		margin-block-start: var(--imgMarginTop);
+		display: block;
+		width: 100%;
+		max-width: 100%;
+		border-radius: $radius-10;
+		height: auto;
+	}
+	&__footer {
+		padding: $spacing-1000 var(--inline-spacing) 0;
+	}
+	&__footer-box {
+		text-align: center;
+		padding: $spacing-600 $spacing-200;
+		background-color: $neutral200;
+		border-radius: $radius-16;
+	}
+	&__footer-btn {
+		@include homeBtn;
+
+		display: block;
+		margin: 1.7em auto 0;
+		&:hover {
+			background-color: $neutral800;
+		}
+	}
+}
+
+@media (768px <= width) {
+	.home-section {
+		&__content {
+			padding: $spacing-1000 var(--inline-spacing);
+		}
+		&__footer {
+			padding: 0 var(--inline-spacing) 0;
+		}
+		&__img {
+			box-shadow: 0 0 0 7px $neutral0;
+			border-radius: $radius-12;
+		}
+		&__divider {
+			max-width: 100%;
+			width: calc(var(--wrapper-width) - var(--inline-spacing) * 2);
+			margin: 0 auto;
+			display: block;
+			border: 1px solid $neutral300;
+		}
+		&__bottom-img {
+			border-radius: $radius-16;
+		}
+		&__text .text-bolded {
+			&::before {
+				@include orangeUnderline(0.5rem, 1);
+			}
+		}
+		&__footer-box {
+			position: relative;
+			padding: $spacing-1000 0;
+			overflow: hidden;
+			z-index: 0;
+
+			.footer-bg {
+				display: block;
+				width: 25%;
+				height: auto;
+				position: absolute;
+				z-index: -1;
+
+				&--fork {
+					left: -5em;
+					bottom: -5em;
+				}
+				&--knife {
+					right: -1em;
+					top: -5em;
+				}
+			}
+		}
+	}
+}
+@media (800px <= width) {
+	.home-section {
+		&__bg {
+			bottom: 5em;
+		}
+	}
+}
+@media (992px <= width) {
+	.home-section {
+		text-align: center;
+		&__content {
+			padding: $spacing-1200 var(--inline-spacing);
+		}
+		&__text {
+			margin: 0.8em auto 0;
+			max-width: 60rem;
+		}
+		.home-section {
+			&__img {
+				box-shadow: 0 0 0 10px $neutral0;
+			}
+		}
+		&__box {
+			flex-direction: row;
+			text-align: left;
+			gap: 3rem;
+		}
+		&__box-card {
+			width: 100%;
+		}
+
+		&__container {
+			display: flex;
+			align-items: center;
+			text-align: left;
+			gap: 4.8rem;
+		}
+		&__bottom-img {
+			margin: 0;
+		}
+
+		&__img-box {
+			width: 100%;
+		}
+		&__text-box {
+			width: 90%;
+		}
+	}
+}
+@media (1100px <= width) {
+	.home-section {
+		&__box {
+			gap: 4.8rem;
+		}
+		&__text-box {
+			width: 80%;
+		}
+		&__footer-box {
+			padding: $spacing-1200 0;
+
+			.footer-bg {
+				width: min(30%, 32rem);
+				&--fork {
+					bottom: -1em;
+				}
+				&--knife {
+					top: 5em;
+					right: -5em;
+				}
+			}
+		}
+	}
+}

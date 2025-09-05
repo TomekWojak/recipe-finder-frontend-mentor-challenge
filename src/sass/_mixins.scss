@@ -1,0 +1,26 @@
+@use "./variables" as *;
+
+@mixin orangeUnderline($bottom, $opacity) {
+	position: absolute;
+	bottom: $bottom;
+	left: 0;
+	content: "";
+	width: 100%;
+	height: 35%;
+	background-color: $orange500;
+	border-radius: $radius-4;
+	opacity: $opacity;
+	z-index: -1;
+}
+@mixin homeBtn {
+	margin-block-start: 1.6em;
+	padding: $spacing-200 $spacing-400;
+	background-color: $neutral900;
+	font-weight: $bold;
+	color: $neutral0;
+	border-radius: $radius-10;
+	border: none;
+	cursor: pointer;
+	font-size: 1.8rem;
+	transition: background-color 0.3s;
+}

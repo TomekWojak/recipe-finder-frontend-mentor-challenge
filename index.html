@@ -16,65 +16,140 @@
 </head>
 
 <body>
-  <header class="header">
-    <div class="header__content wrapper">
-      <a href="" class="header__logo"><img width="260" height="40" src="./dist/img/logo.svg"
-          alt="Healthy Recipe Finder's logo"></a>
-      <button class="header__toggler" aria-expanded="false" aria-label="Show navigation"
-        aria-controls="mobile-navigation"><img width="18" height="16" src="./dist/img/icon-hamburger-menu.svg"
-          alt=""></button>
-      <nav class="nav">
-        <ul class="nav__links nav__links-mobile" id="mobile-navigation">
-          <li class="nav__links-mobile-li">Home</li>
-          <li class="nav__links-mobile-li">About</li>
-          <li class="nav__links-mobile-li">Recipes</li>
-          <li class="nav__links-mobile-li"><button class="nav__links-mobile-btn">Browse recipes</button></li>
-        </ul>
+  <div class="container">
+    <header class="header">
+      <div class="header__content wrapper">
+        <a href="" class="header__logo"><img width="260" height="40" src="./dist/img/logo.svg"
+            alt="Healthy Recipe Finder's logo"></a>
+        <button class="header__toggler" aria-expanded="false" aria-label="Show navigation"
+          aria-controls="mobile-navigation"><img width="18" height="16" src="./dist/img/icon-hamburger-menu.svg"
+            alt=""></button>
+        <nav class="nav">
+          <ul class="nav__links nav__links-mobile" id="mobile-navigation">
+            <li class="nav__links-mobile-li" data-page="home">Home</li>
+            <li class="nav__links-mobile-li" data-page="about">About</li>
+            <li class="nav__links-mobile-li" data-page="recipes">Recipes</li>
+            <li class="nav__links-mobile-li"><button class="nav__links-mobile-btn" data-page="recipes">Browse
+                recipes</button></li>
+          </ul>
 
-        <ul class="nav__links nav__links-desktop desktop-visible">
-          <li class="nav__links-desktop-li active" tabindex="0" data-page="home">Home</li>
-          <li class="nav__links-desktop-li" tabindex="0" data-page="about">About</li>
-          <li class="nav__links-desktop-li" tabindex="0" data-page="recipes">Recipes</li>
-        </ul>
-      </nav>
-      <button class="header__btn desktop-visible">Browse recipes</button>
+          <ul class="nav__links nav__links-desktop desktop-visible">
+            <li class="nav__links-desktop-li active" tabindex="0" data-page="home">Home</li>
+            <li class="nav__links-desktop-li" tabindex="0" data-page="about">About</li>
+            <li class="nav__links-desktop-li" tabindex="0" data-page="recipes">Recipes</li>
+          </ul>
+        </nav>
+        <button class="header__btn desktop-visible" data-page="recipes">Browse recipes</button>
+      </div>
+    </header>
+    <main>
+      <section class="home-section page" data-section="home">
+        <section class="home-section__top">
+          <div class="home-section__content wrapper">
+            <div class="home-section__header">
+              <h1 class="home-section__title main-title"><span class="text-hightlighted">Healthy</span> meals, zero fuss
+              </h1>
+              <p class="home-section__text">Discover eight quick, whole-food recipes that you can cook
+                tonight—no processed junk, no guesswork.</p>
+              <button class="home-section__btn" data-page="recipes">Start exploring</button>
+
+              <picture>
+                <source srcset="./dist/img/image-home-hero-large.webp" media="(min-width: 800px)" />
+                <img class="home-section__img" width="684" height="400" src="./dist/img/image-home-hero-small.webp"
+                  alt="Woman cooking something in light color kitchen" />
+              </picture>
+
+            </div>
+          </div>
+          <img width="1440" height="616" loading="lazy" src="./dist/img/pattern-squiggle-1.svg" alt=""
+            class="home-section__bg">
+        </section>
+
+        <section class="home-section__middle">
+          <div class="home-section__content wrapper">
+            <h2 class="home-section__subtitle subtitle">What you'll get</h2>
+            <div class="home-section__box">
+
+              <div class="home-section__box-card">
+                <div class="home-section__box-card-icon">
+                  <img width="24" height="34" loading="lazy" src="./dist/img/icon-whole-food-recipes.svg" alt="">
+                </div>
+                <p class="home-section__box-card-title">Whole-food recipes</p>
+                <p class="home-section__box-card-text">Each dish uses everyday, unprocessed ingredients.</p>
+              </div>
+              <div class="home-section__box-card">
+                <div class="home-section__box-card-icon">
+                  <img width="40" height="42" loading="lazy" src="./dist/img/icon-minimum-fuss.svg" alt="">
+                </div>
+                <p class="home-section__box-card-title">Minimum fuss</p>
+                <p class="home-section__box-card-text">All recipes are designed to make eating healthy quick and easy.
+                </p>
+              </div>
+              <div class="home-section__box-card">
+                <div class="home-section__box-card-icon">
+                  <img width="40" height="40" loading="lazy" src="./dist/img/icon-search-in-seconds.svg" alt="">
+                </div>
+                <p class="home-section__box-card-title">Search in seconds</p>
+                <p class="home-section__box-card-text">Filter by name or ingredient and jump straight to the recipe you
+                  need.</p>
+              </div>
+
+            </div>
+          </div>
+        </section>
+        <hr class="home-section__divider">
+
+        <section class="home-section__bottom">
+          <div class="home-section__content wrapper">
+            <div class="home-section__container">
+              <div class="home-section__text-box">
+                <h2 class="home-section__bottom-subtitle subtitle">Built for real life</h2>
+                <p class="home-section__text">Cooking shouldn't be complicated. These recipes come in under
+                  <span class="text-bolded">30 minutes</span> of active time, fit busy schedules, and taste good
+                  enough to repeat.
+                </p>
+                <p class="home-section__text">Whether you're new to the kitchen or just need fresh ideas,
+                  we've got you covered.</p>
+              </div>
+              <div class="home-section__img-box">
+                <picture>
+                  <source srcset="./dist/img/image-home-real-life-large.webp" media="(min-width: 800px)" />
+                  <img class="home-section__bottom-img" width="684" height="400"
+                    src="./dist/img/image-home-real-life-small.webp" alt="Woman chopping salad on the desk" />
+                </picture>
+              </div>
+            </div>
+          </div>
+        </section>
+        <section class="home-section__footer">
+          <div class="home-section__footer-box wrapper">
+            <h2 class="home-section__footer-subtitle subtitle">Ready to cook smarter?</h2>
+            <p class="home-section__text">Hit the button, pick a recipe, and get dinner on the table—fast.</p>
+            <button class="home-section__footer-btn" data-page="recipes">Browse recipes</button>
+
+            <img width="315" height="391" loading="lazy" class="footer-bg footer-bg--fork desktop-visible"
+              src="./dist/img/pattern-fork.svg" alt="">
+            <img width="339" height="339" loading="lazy" class="footer-bg footer-bg--knife desktop-visible"
+              src="./dist/img/pattern-knife.svg" alt="">
+          </div>
+        </section>
+
+      </section>
+    </main>
+  </div>
+  <footer class="footer">
+    <div class="footer__content wrapper">
+      <ul class="footer__social">
+        <li class="footer__link"><a href="" aria-label="Instagram link"><img src="./dist/img/icon-instagram.svg"
+              alt=""></a></li>
+        <li class="footer__link"><a href="" aria-label="Bluesky link"><img src="./dist/img/icon-bluesky.svg" alt=""></a>
+        </li>
+        <li class="footer__link"><a href="" aria-label="Tiktok link"><img src="./dist/img//icon-tiktok.svg" alt=""></a>
+        </li>
+      </ul>
+      <p class="footer__text">Made with ❤️ and 🥑</p>
     </div>
-  </header>
-  Healthy meals, zero fuss
-
-  Discover eight quick, whole-food recipes that you can cook
-  tonight—no processed junk, no guesswork.
-
-  Start exploring
-
-  What you'll get
-
-  Whole-food recipes
-  Each dish uses everyday, unprocessed ingredients.
-
-  Minimum fuss
-  All recipes are designed to make eating healthy quick and easy.
-
-  Search in seconds
-  Filter by name or ingredient and jump straight to the recipe you need.
-
-  Built for real life
-
-  Cooking shouldn't be complicated. These recipes come in under
-  30 minutes of active time, fit busy schedules, and taste good
-  enough to repeat.
-
-  Whether you're new to the kitchen or just need fresh ideas,
-  we've got you covered.
-
-  Ready to cook smarter?
-
-  Hit the button, pick a recipe, and get dinner on the table—fast.
-
-  Browse recipes
-
-  Made with ❤️ and 🥑
-
+  </footer>
 </body>
 
 </html>

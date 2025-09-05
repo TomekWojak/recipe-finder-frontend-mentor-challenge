@@ -43,5 +43,15 @@ document.addEventListener("DOMContentLoaded", function () {
 			handleDesktopLinks(link);
 		})
 	);
+	window.addEventListener("click", (e) => {
+		const isExpanded = headerToggler.getAttribute("aria-expanded");
+		if (
+			isExpanded === "true" &&
+			e.target !== mobileNav &&
+			e.target !== headerToggler
+		) {
+			closeNav();
+		}
+	});
 	headerToggler.addEventListener("click", handleMobileNavigation);
 });

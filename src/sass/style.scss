@@ -1,5 +1,6 @@
 @use "./variables" as *;
-
+@use "./home" as *;
+@use "./mixins" as *;
 *,
 *::before,
 *::after {
@@ -7,27 +8,50 @@
 	padding: 0;
 	box-sizing: border-box;
 }
-
+:root {
+	--inline-spacing: 1.6rem;
+	--wrapper-width: 140rem;
+	--imgMarginTop: 4em;
+}
 html {
 	font-size: 62.5%;
 	scroll-behavior: smooth;
 }
+button,
+input,
+label,
+textarea {
+	font-family: inherit;
+}
 body {
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	min-height: 100vh;
 	font-family: "Nunito", sans-serif;
 	background-color: $neutral100;
 }
+
 .wrapper {
-	width: min(100%, 120rem);
+	width: min(100%, var(--wrapper-width));
 	margin: 0 auto;
 }
 
 .desktop-visible {
 	display: none;
 }
-
+.main-title,
+.subtitle {
+	font-weight: $extra-bold;
+	letter-spacing: $ls-1;
+	font-size: clamp(5em, 8vw, 7.2rem);
+}
+.subtitle {
+	font-size: clamp(3.6em, 6vw, 5rem);
+}
 .header {
 	position: relative;
-	padding: $spacing-200;
+	padding: $spacing-200 var(--inline-spacing);
 	border-bottom: 1px solid $neutral300;
 
 	&__content {
@@ -57,6 +81,7 @@ body {
 
 		img {
 			display: block;
+			pointer-events: none;
 		}
 		&[aria-expanded="true"] {
 			border-color: #163a34;
@@ -69,6 +94,7 @@ body {
 	left: 50%;
 	bottom: 0;
 	transform: translate(-50%, 100%);
+	z-index: 1000;
 
 	&__links-mobile,
 	&__links-desktop {
@@ -77,6 +103,7 @@ body {
 	&__links-mobile {
 		height: 0;
 		border: 1px solid $neutral300;
+		border-top: none;
 		border-radius: $radius-8;
 		background-color: $neutral0;
 		box-shadow: 0 12px 22px rgba(57, 88, 82, 0.1);
@@ -103,14 +130,42 @@ body {
 		border-radius: $radius-10;
 		border: none;
 		background-color: $neutral900;
-		font-family: inherit;
 		color: $neutral0;
 		font-size: 2rem;
 		font-weight: $bold;
 		cursor: pointer;
 	}
 }
+
+.footer {
+	&__content {
+		display: flex;
+		padding: $spacing-400 var(--inline-spacing) $spacing-250;
+		flex-direction: column;
+		align-items: center;
+		gap: 2.4rem;
+		color: $neutral900;
+	}
+
+	&__social {
+		list-style: none;
+		display: flex;
+		align-items: center;
+		gap: 2.4rem;
+	}
+	&__text {
+		font-size: 1.6rem;
+		font-weight: $medium;
+	}
+}
+
 @media (768px <= width) {
+	:root {
+		--inline-spacing: 3.2rem;
+	}
+	.header {
+		padding: $spacing-400 var(--inline-spacing) $spacing-250;
+	}
 	.nav {
 		&__links-mobile-btn {
 			transition: background-color 0.3s;
@@ -120,8 +175,30 @@ body {
 			}
 		}
 	}
+	.footer {
+		&__content {
+			padding: $spacing-500 var(--inline-spacing);
+			flex-direction: row;
+			justify-content: space-between;
+			gap: 0;
+		}
+
+		&__social {
+			order: 1;
+		}
+		&__link {
+			transition: opacity 0.3s;
+
+			&:hover {
+				opacity: 0.7;
+			}
+		}
+	}
 }
 @media (800px <= width) {
+	:root {
+		--imgMarginTop: 5em;
+	}
 	.header {
 		&__toggler {
 			display: none;
@@ -132,7 +209,6 @@ body {
 			border-radius: $radius-10;
 			background-color: $neutral900;
 			border: none;
-			font-family: inherit;
 			color: $neutral0;
 			font-size: 1.8rem;
 			font-weight: $bold;
@@ -182,5 +258,15 @@ body {
 				transform: scale(1);
 			}
 		}
+	}
+}
+
+@media (992px <= width) {
+	:root {
+		--inline-spacing: 6rem;
+		--imgMarginTop: 7em;
+	}
+	.header {
+		padding: $spacing-250 var(--inline-spacing);
 	}
 }
