@@ -43,7 +43,7 @@
       </div>
     </header>
     <main>
-      <section class="home-section page" data-section="home" style="display: none;">
+      <section class="home-section page page-active" data-section="home">
         <section class="home-section__top">
           <div class="home-section__content wrapper">
             <div class="home-section__header">
@@ -54,7 +54,7 @@
               <button class="home-section__btn" data-page="recipes">Start exploring</button>
 
               <picture>
-                <source srcset="./dist/img/image-home-hero-large.webp" media="(min-width: 800px)" />
+                <source srcset="./dist/img/image-home-hero-large.webp" media="(min-width: 768px)" />
                 <img class="home-section__img" width="684" height="400" src="./dist/img/image-home-hero-small.webp"
                   alt="Woman cooking something in light color kitchen" />
               </picture>
@@ -113,7 +113,7 @@
               </div>
               <div class="home-section__img-box">
                 <picture>
-                  <source srcset="./dist/img/image-home-real-life-large.webp" media="(min-width: 800px)" />
+                  <source srcset="./dist/img/image-home-real-life-large.webp" media="(min-width: 768px)" />
                   <img class="home-section__bottom-img" width="684" height="400"
                     src="./dist/img/image-home-real-life-small.webp" alt="Woman chopping salad on the desk" />
                 </picture>
@@ -121,6 +121,7 @@
             </div>
           </div>
         </section>
+
         <section class="home-section__footer">
           <div class="home-section__footer-box wrapper">
             <h2 class="home-section__footer-subtitle subtitle">Ready to cook smarter?</h2>
@@ -138,32 +139,158 @@
 
       <!-- about section -->
       <section class="about-section page" data-section="about">
-        <div class="about-section__content wrapper">
+        <section class="about-section--top">
+          <div class="about-section__content wrapper">
 
-          <div class="about-section__box about-section__box--top">
-            <div class="about-section__box-text">
-              <span class="about-section__box-badge">Our mission</span>
-              <h3 class="about-section__subtitle subtitle">Help more people cook nourishing meals, more often.</h3>
-              <p class="about-section__text text">Healthy Recipe Finder was created to prove that healthy
-                eating can be convenient, affordable, and genuinely delicious.</p>
-              <p class="about-section__text text">We showcase quick, whole-food dishes that anyone can master—no
-                fancy equipment, no ultra-processed shortcuts—just honest
-                ingredients and straightforward steps.</p>
+            <div class="about-section__box about-section__box--top">
+              <div class="about-section__box-text">
+                <span class="about-section__box-badge">Our mission</span>
+                <h3 class="about-section__subtitle subtitle">Help more people cook nourishing meals, more often.</h3>
+                <p class="about-section__text text">Healthy Recipe Finder was created to prove that healthy
+                  eating can be convenient, affordable, and genuinely delicious.</p>
+                <p class="about-section__text text">We showcase quick, whole-food dishes that anyone can master—no
+                  fancy equipment, no ultra-processed shortcuts—just honest
+                  ingredients and straightforward steps.</p>
+              </div>
+              <div class="about-section__box-img">
+                <picture>
+                  <source srcset="./dist/img/image-about-our-mission-large.webp" media="(min-width: 768px)" />
+                  <img class="about-section__img" width="686" height="667"
+                    src="./dist/img/image-about-our-mission-small.webp"
+                    alt="A woman standing in her kitchen, chopping carrots on a board. She smiles and looks directly at the camera." />
+                </picture>
+                <img width="201" height="144" src="./dist/img/pattern-squiggle-2.svg" alt=""
+                  class="about-section__bg desktop-visible">
+              </div>
             </div>
-            <div class="about-section__box-img">
-              <picture>
-                <source srcset="./dist/img/image-about-our-mission-large.webp" media="(min-width: 800px)" />
-                <img class="about-section__img" width="686" height="667"
-                  src="./dist/img/image-about-our-mission-small.webp"
-                  alt="A woman standing in her kitchen, chopping carrots on a board. She smiles and looks directly at the camera." />
-              </picture>
-              <img width="201" height="144" src="./dist/img/pattern-squiggle-2.svg" alt=""
-                class="about-section__bg desktop-visible">
+
+          </div>
+        </section>
+        <hr class="about-section__divider">
+
+        <section class="about-section__exist-section">
+          <div class="about-section__exist-section__content wrapper">
+            <h4 class="about-section__exist-section__subtitle subtitle">Why we exist</h4>
+            <ul class="about-section__exist-section__list">
+              <li class="about-section__exist-section__item">
+                <img src="./dist/img/icon-bullet-point.svg" width="32" height="32" loading="lazy">
+                <div class="about-section__exist-section__item-box">
+                  <p class="about-section__exist-section__item-title">Cut through the noise.</p>
+                  <p class="about-section__exist-section__item-text text">The internet is bursting with recipes, yet
+                    most busy cooks
+                    still default to take-away or packaged foods. We curate a
+                    tight collection of fool-proof dishes so you can skip the
+                    scrolling and start cooking.</p>
+                </div>
+              </li>
+              <li class="about-section__exist-section__item">
+                <img src="./dist/img/icon-bullet-point.svg" width="32" height="32" loading="lazy">
+                <div class="about-section__exist-section__item-box">
+                  <p class="about-section__exist-section__item-title">Empower home kitchens.</p>
+                  <p class="about-section__exist-section__item-text text">When you control what goes into your meals,
+                    you control how
+                    you feel. Every recipe is built around unrefined ingredients
+                    and ready in about half an hour of active prep.</p>
+                </div>
+              </li>
+              <li class="about-section__exist-section__item">
+                <img src="./dist/img/icon-bullet-point.svg" width="32" height="32" loading="lazy">
+                <div class="about-section__exist-section__item-box">
+                  <p class="about-section__exist-section__item-title">Make healthy look good.</p>
+                  <p class="about-section__exist-section__item-text text">High-resolution imagery shows you exactly what
+                    success looks
+                    like—because we eat with our eyes first, and confidence matters.</p>
+                </div>
+              </li>
+            </ul>
+          </div>
+          <hr class="about-section__divider">
+          <div class="about-section__exist-section__content wrapper">
+            <h4 class="about-section__exist-section__subtitle subtitle">Our food philosophy</h4>
+            <ul class="about-section__exist-section__list">
+              <li class="about-section__exist-section__item">
+                <img src="./dist/img/icon-bullet-point.svg" width="32" height="32" loading="lazy">
+                <div class="about-section__exist-section__item-box">
+                  <p class="about-section__exist-section__item-title">Whole ingredients first.</p>
+                  <p class="about-section__exist-section__item-text text">Fresh produce, grains, legumes, herbs, and
+                    quality fats form the
+                    backbone of every recipe.</p>
+                </div>
+              </li>
+              <li class="about-section__exist-section__item">
+                <img src="./dist/img/icon-bullet-point.svg" width="32" height="32" loading="lazy">
+                <div class="about-section__exist-section__item-box">
+                  <p class="about-section__exist-section__item-title">Flavor without compromise.</p>
+                  <p class="about-section__exist-section__item-text text">Spices, citrus, and natural sweetness replace
+                    excess salt, sugar,
+                    and additives.</p>
+                </div>
+              </li>
+              <li class="about-section__exist-section__item">
+                <img src="./dist/img/icon-bullet-point.svg" width="32" height="32" loading="lazy">
+                <div class="about-section__exist-section__item-box">
+                  <p class="about-section__exist-section__item-title">Respect for time.</p>
+                  <p class="about-section__exist-section__item-text text">Weeknight meals should slot into real
+                    schedules; weekend cooking
+                    can be leisurely but never wasteful.</p>
+                </div>
+              </li>
+              <li class="about-section__exist-section__item">
+                <img src="./dist/img/icon-bullet-point.svg" width="32" height="32" loading="lazy">
+                <div class="about-section__exist-section__item-box">
+                  <p class="about-section__exist-section__item-title">Sustainable choices.</p>
+                  <p class="about-section__exist-section__item-text text">Short ingredient lists cut down on food waste
+                    and carbon footprint,
+                    while plant-forward dishes keep things planet-friendly.</p>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </section>
+        <hr class="about-section__divider">
+
+        <section class="about-section--bottom">
+          <div class="about-section--bottom__content wrapper">
+            <div class="about-section__box about-section__box--bottom">
+              <div class="about-section--bottom__text-box">
+                <h4 class="about-section--bottom__subtitle subtitle">Beyond the plate</h4>
+                <p class="about-section--bottom__text text">We believe food is a catalyst for community and well-being.
+                  By sharing approachable recipes, we hope to:</p>
+                <ul class="about-section--bottom__list">
+                  <li class="about-section--bottom__item">
+                    Encourage family dinners and social cooking.
+                  </li>
+                  <li class="about-section--bottom__item">
+                    Reduce reliance on single-use packaging and delivery waste.
+                  </li>
+                  <li class="about-section--bottom__item">
+                    Spark curiosity about seasonal produce and local agriculture.
+                  </li>
+                </ul>
+              </div>
+              <div class="about-section--bottom__img-box">
+                <picture>
+                  <source srcset="./dist/img/image-about-beyond-the-plate-large.webp" media="(min-width: 768px)" />
+                  <img class="about-section__img about-section__img--bottom" width="686" height="369"
+                    src="./dist/img/image-about-beyond-the-plate-small.webp"
+                    alt="Family having fun while preparing food in the kitchen" />
+                </picture>
+              </div>
             </div>
           </div>
+        </section>
+        <section class="about-section__footer">
+          <div class="about-section__footer-box wrapper">
+            <h2 class="about-section__footer-subtitle subtitle">Ready to cook smarter?</h2>
+            <p class="about-section__text text">Hit the button, pick a recipe, and get dinner on the table—fast.</p>
+            <button class="about-section__footer-btn" data-page="recipes">Browse recipes</button>
 
-        </div>
-        <hr class="about-section__divider">
+            <img width="315" height="391" loading="lazy" class="footer-bg footer-bg--fork desktop-visible"
+              src="./dist/img/pattern-fork.svg" alt="">
+            <img width="339" height="339" loading="lazy" class="footer-bg footer-bg--knife desktop-visible"
+              src="./dist/img/pattern-knife.svg" alt="">
+          </div>
+        </section>
       </section>
 
     </main>

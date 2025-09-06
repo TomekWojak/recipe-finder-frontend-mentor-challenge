@@ -1,0 +1,75 @@
+@use "./variables" as *;
+@use "./mixins" as *;
+
+.home-section,
+.about-section {
+	&__footer {
+		padding: $spacing-1000 var(--inline-spacing) 0;
+	}
+	&__footer-box {
+		text-align: center;
+		padding: $spacing-600 $spacing-200;
+		background-color: $neutral200;
+		border-radius: $radius-16;
+	}
+	&__footer-btn {
+		@include homeBtn;
+
+		display: block;
+		margin: 1.7em auto 0;
+		&:hover {
+			background-color: $neutral800;
+		}
+	}
+}
+
+@media (768px <= width) {
+	.home-section,
+	.about-section {
+		&__footer {
+			padding: 0 var(--inline-spacing) 0;
+		}
+		&__footer-box {
+			position: relative;
+			padding: $spacing-1000 0;
+			overflow: hidden;
+			z-index: 0;
+
+			.footer-bg {
+				display: block;
+				width: 25%;
+				height: auto;
+				position: absolute;
+				z-index: -1;
+
+				&--fork {
+					left: -5em;
+					bottom: -5em;
+				}
+				&--knife {
+					right: -1em;
+					top: -5em;
+				}
+			}
+		}
+	}
+}
+@media (1100px <= width) {
+	.home-section,
+	.about-section {
+		&__footer-box {
+			padding: $spacing-1200 0;
+
+			.footer-bg {
+				width: min(30%, 32rem);
+				&--fork {
+					bottom: -1em;
+				}
+				&--knife {
+					top: 5em;
+					right: -5em;
+				}
+			}
+		}
+	}
+}

@@ -3,9 +3,9 @@
 
 .about-section {
 	overflow: hidden;
+	color: $neutral900;
 	&__content {
 		padding: $spacing-600 var(--inline-spacing) $spacing-800;
-		color: $neutral900;
 	}
 	&__box-badge {
 		display: block;
@@ -27,12 +27,69 @@
 	&__divider {
 		@include dividerStyles;
 	}
+
+	// new section
+	&__exist-section {
+		&__content {
+			padding: $spacing-600 var(--inline-spacing) $spacing-600;
+		}
+		&__list {
+			margin-block-start: 4em;
+			list-style: none;
+			display: flex;
+			flex-direction: column;
+			gap: 2.4rem;
+		}
+		&__item {
+			display: flex;
+			align-items: flex-start;
+			gap: 2rem;
+
+			img {
+				flex-shrink: 0;
+			}
+		}
+		&__item-title {
+			font-size: 2.4rem;
+			font-weight: $bold;
+		}
+	}
+	// new section
+	&--bottom {
+		&__content {
+			padding: $spacing-600 var(--inline-spacing);
+		}
+		&__list {
+			padding-inline-start: 3em;
+			padding-block-start: 0.5em;
+		}
+		&__item {
+			margin: 0.2em 0;
+			font-size: 2rem;
+			color: $neutral800;
+		}
+	}
 }
 
 @media (768px <= width) {
 	.about-section {
 		&__content {
 			padding: $spacing-800 var(--inline-spacing) $spacing-1000;
+		}
+		// new section
+		&__exist-section {
+			&__content {
+				padding: $spacing-1000 var(--inline-spacing);
+			}
+			&__list {
+				gap: 3.2rem;
+			}
+		}
+		// new section
+		&--bottom {
+			&__content {
+				padding: $spacing-1000 var(--inline-spacing);
+			}
 		}
 	}
 }
@@ -45,6 +102,10 @@
 		}
 		&__img {
 			margin: 0;
+
+			&--bottom {
+				margin-block-start: 5em;
+			}
 		}
 		&__box-img {
 			position: relative;
@@ -61,6 +122,35 @@
 		&__box-text {
 			width: 100%;
 		}
+		// new section
+		&__exist-section {
+			&__content {
+				display: flex;
+				align-items: flex-start;
+				padding: $spacing-1200 var(--inline-spacing);
+				gap: 5rem;
+			}
+			&__list {
+				width: 100%;
+				margin: 0;
+				gap: 4.8rem;
+			}
+			&__subtitle {
+				width: 60%;
+			}
+		}
+		// new section
+		&__box--bottom {
+			display: block;
+		}
+		&--bottom {
+			&__text-box {
+				width: 80%;
+			}
+			&__img-box {
+				width: 100%;
+			}
+		}
 	}
 }
 @media (1100px <= width) {
@@ -73,6 +163,48 @@
 		}
 		&__box-text {
 			width: 80%;
+		}
+		&__img {
+			&--bottom {
+				margin: 0;
+			}
+		}
+		// new section
+		&__exist-section {
+			&__content {
+				display: flex;
+				align-items: flex-start;
+				padding: $spacing-1200 var(--inline-spacing);
+				gap: 6.4rem;
+			}
+			&__list {
+				width: 85%;
+				margin: 0;
+			}
+			&__subtitle {
+				width: 45%;
+			}
+		}
+		// new section
+		&--bottom {
+			&__content {
+				padding: $spacing-1200 var(--inline-spacing);
+			}
+		}
+		&__box--bottom {
+			display: flex;
+		}
+	}
+}
+@media (1200px <= width) {
+	.about-section {
+		&--bottom {
+			&__box {
+				gap: 6.4rem;
+			}
+			&__text-box {
+				width: 55%;
+			}
 		}
 	}
 }

@@ -2,6 +2,7 @@
 @use "./home" as *;
 @use "./about" as *;
 @use "./mixins" as *;
+@use "./components" as *;
 *,
 *::before,
 *::after {
@@ -32,7 +33,14 @@ body {
 	font-family: "Nunito", sans-serif;
 	background-color: $neutral100;
 }
-
+.page {
+	opacity: 0;
+	display: none;
+}
+.page-active {
+	display: block;
+	animation: showPage 0.5s forwards;
+}
 .wrapper {
 	width: min(100%, var(--wrapper-width));
 	margin: 0 auto;
@@ -277,5 +285,14 @@ body {
 	}
 	.header {
 		padding: $spacing-250 var(--inline-spacing);
+	}
+}
+
+@keyframes showPage {
+	from {
+		opacity: 0;
+	}
+	to {
+		opacity: 1;
 	}
 }

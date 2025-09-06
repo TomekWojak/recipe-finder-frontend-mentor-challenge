@@ -107,24 +107,6 @@
 		border-radius: $radius-10;
 		height: auto;
 	}
-	&__footer {
-		padding: $spacing-1000 var(--inline-spacing) 0;
-	}
-	&__footer-box {
-		text-align: center;
-		padding: $spacing-600 $spacing-200;
-		background-color: $neutral200;
-		border-radius: $radius-16;
-	}
-	&__footer-btn {
-		@include homeBtn;
-
-		display: block;
-		margin: 1.7em auto 0;
-		&:hover {
-			background-color: $neutral800;
-		}
-	}
 }
 
 @media (768px <= width) {
@@ -132,9 +114,7 @@
 		&__content {
 			padding: $spacing-1000 var(--inline-spacing);
 		}
-		&__footer {
-			padding: 0 var(--inline-spacing) 0;
-		}
+
 		&__img {
 			box-shadow: 0 0 0 7px $neutral0;
 			border-radius: $radius-12;
@@ -150,29 +130,7 @@
 				@include orangeUnderline(0.5rem, 1);
 			}
 		}
-		&__footer-box {
-			position: relative;
-			padding: $spacing-1000 0;
-			overflow: hidden;
-			z-index: 0;
 
-			.footer-bg {
-				display: block;
-				width: 25%;
-				height: auto;
-				position: absolute;
-				z-index: -1;
-
-				&--fork {
-					left: -5em;
-					bottom: -5em;
-				}
-				&--knife {
-					right: -1em;
-					top: -5em;
-				}
-			}
-		}
 	}
 }
 @media (800px <= width) {
