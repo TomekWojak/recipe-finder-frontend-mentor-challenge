@@ -1,5 +1,6 @@
 @use "./variables" as *;
 @use "./home" as *;
+@use "./about" as *;
 @use "./mixins" as *;
 *,
 *::before,
@@ -36,6 +37,13 @@ body {
 	width: min(100%, var(--wrapper-width));
 	margin: 0 auto;
 }
+.text {
+	margin-block-start: 0.8em;
+	font-size: 2rem;
+	line-height: $lh-150;
+	font-weight: $medium;
+	color: $neutral800;
+}
 
 .desktop-visible {
 	display: none;
@@ -53,6 +61,7 @@ body {
 	position: relative;
 	padding: $spacing-200 var(--inline-spacing);
 	border-bottom: 1px solid $neutral300;
+	background-color: $neutral100;
 
 	&__content {
 		display: flex;

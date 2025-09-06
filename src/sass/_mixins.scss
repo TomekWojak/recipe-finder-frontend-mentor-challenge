@@ -24,3 +24,10 @@
 	font-size: 1.8rem;
 	transition: background-color 0.3s;
 }
+@mixin dividerStyles {
+	max-width: 100%;
+	width: calc(var(--wrapper-width) - var(--inline-spacing) * 2);
+	margin: 0 auto;
+	display: block;
+	border: 1px solid $neutral300;
+}

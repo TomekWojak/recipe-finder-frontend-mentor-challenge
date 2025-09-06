@@ -1,0 +1,78 @@
+@use "./variables" as *;
+@use "./mixins" as *;
+
+.about-section {
+	overflow: hidden;
+	&__content {
+		padding: $spacing-600 var(--inline-spacing) $spacing-800;
+		color: $neutral900;
+	}
+	&__box-badge {
+		display: block;
+		width: fit-content;
+		padding: $spacing-025 $spacing-075;
+		font-weight: $bold;
+		background-color: $orange500;
+		border-radius: $radius-6;
+		font-size: 2rem;
+		margin-block-end: 1em;
+	}
+	&__img {
+		display: block;
+		width: 100%;
+		height: auto;
+		margin-block-start: var(--imgMarginTop);
+		border-radius: $radius-10;
+	}
+	&__divider {
+		@include dividerStyles;
+	}
+}
+
+@media (768px <= width) {
+	.about-section {
+		&__content {
+			padding: $spacing-800 var(--inline-spacing) $spacing-1000;
+		}
+	}
+}
+@media (992px <= width) {
+	.about-section {
+		&__box {
+			display: flex;
+			align-items: center;
+			gap: 4rem;
+		}
+		&__img {
+			margin: 0;
+		}
+		&__box-img {
+			position: relative;
+			width: 100%;
+		}
+		&__bg.desktop-visible {
+			width: 30%;
+			height: auto;
+			position: absolute;
+			display: block;
+			bottom: 22%;
+			right: -12%;
+		}
+		&__box-text {
+			width: 100%;
+		}
+	}
+}
+@media (1100px <= width) {
+	.about-section {
+		&__content {
+			padding: $spacing-1200 var(--inline-spacing);
+		}
+		&__box {
+			gap: 6.4rem;
+		}
+		&__box-text {
+			width: 80%;
+		}
+	}
+}

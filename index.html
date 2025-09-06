@@ -43,13 +43,13 @@
       </div>
     </header>
     <main>
-      <section class="home-section page" data-section="home">
+      <section class="home-section page" data-section="home" style="display: none;">
         <section class="home-section__top">
           <div class="home-section__content wrapper">
             <div class="home-section__header">
               <h1 class="home-section__title main-title"><span class="text-hightlighted">Healthy</span> meals, zero fuss
               </h1>
-              <p class="home-section__text">Discover eight quick, whole-food recipes that you can cook
+              <p class="home-section__text text">Discover eight quick, whole-food recipes that you can cook
                 tonight—no processed junk, no guesswork.</p>
               <button class="home-section__btn" data-page="recipes">Start exploring</button>
 
@@ -104,11 +104,11 @@
             <div class="home-section__container">
               <div class="home-section__text-box">
                 <h2 class="home-section__bottom-subtitle subtitle">Built for real life</h2>
-                <p class="home-section__text">Cooking shouldn't be complicated. These recipes come in under
+                <p class="home-section__text text">Cooking shouldn't be complicated. These recipes come in under
                   <span class="text-bolded">30 minutes</span> of active time, fit busy schedules, and taste good
                   enough to repeat.
                 </p>
-                <p class="home-section__text">Whether you're new to the kitchen or just need fresh ideas,
+                <p class="text">Whether you're new to the kitchen or just need fresh ideas,
                   we've got you covered.</p>
               </div>
               <div class="home-section__img-box">
@@ -124,7 +124,7 @@
         <section class="home-section__footer">
           <div class="home-section__footer-box wrapper">
             <h2 class="home-section__footer-subtitle subtitle">Ready to cook smarter?</h2>
-            <p class="home-section__text">Hit the button, pick a recipe, and get dinner on the table—fast.</p>
+            <p class="home-section__text text">Hit the button, pick a recipe, and get dinner on the table—fast.</p>
             <button class="home-section__footer-btn" data-page="recipes">Browse recipes</button>
 
             <img width="315" height="391" loading="lazy" class="footer-bg footer-bg--fork desktop-visible"
@@ -135,6 +135,37 @@
         </section>
 
       </section>
+
+      <!-- about section -->
+      <section class="about-section page" data-section="about">
+        <div class="about-section__content wrapper">
+
+          <div class="about-section__box about-section__box--top">
+            <div class="about-section__box-text">
+              <span class="about-section__box-badge">Our mission</span>
+              <h3 class="about-section__subtitle subtitle">Help more people cook nourishing meals, more often.</h3>
+              <p class="about-section__text text">Healthy Recipe Finder was created to prove that healthy
+                eating can be convenient, affordable, and genuinely delicious.</p>
+              <p class="about-section__text text">We showcase quick, whole-food dishes that anyone can master—no
+                fancy equipment, no ultra-processed shortcuts—just honest
+                ingredients and straightforward steps.</p>
+            </div>
+            <div class="about-section__box-img">
+              <picture>
+                <source srcset="./dist/img/image-about-our-mission-large.webp" media="(min-width: 800px)" />
+                <img class="about-section__img" width="686" height="667"
+                  src="./dist/img/image-about-our-mission-small.webp"
+                  alt="A woman standing in her kitchen, chopping carrots on a board. She smiles and looks directly at the camera." />
+              </picture>
+              <img width="201" height="144" src="./dist/img/pattern-squiggle-2.svg" alt=""
+                class="about-section__bg desktop-visible">
+            </div>
+          </div>
+
+        </div>
+        <hr class="about-section__divider">
+      </section>
+
     </main>
   </div>
   <footer class="footer">
