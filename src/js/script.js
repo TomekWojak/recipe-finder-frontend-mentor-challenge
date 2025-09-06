@@ -38,11 +38,33 @@ document.addEventListener("DOMContentLoaded", function () {
 		link.classList.add("active");
 	};
 
+	// handle pages
+
+	const handlePages = (e) => {
+		const element = e.target.closest("[data-page]");
+
+		if (!element) return;
+		const allPages = document.querySelectorAll(".page[data-section]");
+
+		const btnData = element.dataset.page;
+		const pageToShow = document.querySelector(
+			`.page[data-section="${btnData}"]`
+		);
+
+		if (!pageToShow) return;
+
+		allPages.forEach((page) => page.classList.remove("page-active"));
+		pageToShow.classList.add("page-active");
+	};
+
 	desktopLinks.forEach((link) =>
 		link.addEventListener("click", () => {
 			handleDesktopLinks(link);
 		})
 	);
+	document.body.addEventListener("click", (e) => {
+		handlePages(e);
+	});
 	window.addEventListener("click", (e) => {
 		const isExpanded = headerToggler.getAttribute("aria-expanded");
 		if (

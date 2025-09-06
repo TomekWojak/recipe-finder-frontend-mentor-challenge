@@ -35,6 +35,7 @@ body {
 }
 .page {
 	opacity: 0;
+	transform: translateY(50px);
 	display: none;
 }
 .page-active {
@@ -66,10 +67,12 @@ body {
 	font-size: clamp(3.6em, 6vw, 5rem);
 }
 .header {
-	position: relative;
+	position: sticky;
+	top: 0;
 	padding: $spacing-200 var(--inline-spacing);
 	border-bottom: 1px solid $neutral300;
 	background-color: $neutral100;
+	z-index: 1000;
 
 	&__content {
 		display: flex;
@@ -123,7 +126,7 @@ body {
 		border-top: none;
 		border-radius: $radius-8;
 		background-color: $neutral0;
-		box-shadow: 0 12px 22px rgba(57, 88, 82, 0.1);
+		box-shadow: 0 12px 22px rgba(57, 88, 82, 0.16);
 		transition: height 0.3s;
 		overflow: hidden;
 	}
@@ -291,8 +294,10 @@ body {
 @keyframes showPage {
 	from {
 		opacity: 0;
+		transform: translateY(50px);
 	}
 	to {
 		opacity: 1;
+		transform: translateY(0);
 	}
 }

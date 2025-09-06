@@ -26,20 +26,21 @@
             alt=""></button>
         <nav class="nav">
           <ul class="nav__links nav__links-mobile" id="mobile-navigation">
-            <li class="nav__links-mobile-li" data-page="home">Home</li>
-            <li class="nav__links-mobile-li" data-page="about">About</li>
-            <li class="nav__links-mobile-li" data-page="recipes">Recipes</li>
-            <li class="nav__links-mobile-li"><button class="nav__links-mobile-btn" data-page="recipes">Browse
+            <li class="nav-element nav__links-mobile-li" data-page="home">Home</li>
+            <li class="nav-element nav__links-mobile-li" data-page="about">About</li>
+            <li class="nav-element nav__links-mobile-li" data-page="recipes">Recipes</li>
+            <li class="nav__links-mobile-li"><button class="nav-element nav__links-mobile-btn"
+                data-page="recipes">Browse
                 recipes</button></li>
           </ul>
 
           <ul class="nav__links nav__links-desktop desktop-visible">
-            <li class="nav__links-desktop-li active" tabindex="0" data-page="home">Home</li>
-            <li class="nav__links-desktop-li" tabindex="0" data-page="about">About</li>
-            <li class="nav__links-desktop-li" tabindex="0" data-page="recipes">Recipes</li>
+            <li class="nav-element nav__links-desktop-li active" tabindex="0" data-page="home">Home</li>
+            <li class="nav-element nav__links-desktop-li" tabindex="0" data-page="about">About</li>
+            <li class="nav-element nav__links-desktop-li" tabindex="0" data-page="recipes">Recipes</li>
           </ul>
         </nav>
-        <button class="header__btn desktop-visible" data-page="recipes">Browse recipes</button>
+        <button class="nav-element header__btn desktop-visible" data-page="recipes">Browse recipes</button>
       </div>
     </header>
     <main>
@@ -51,7 +52,7 @@
               </h1>
               <p class="home-section__text text">Discover eight quick, whole-food recipes that you can cook
                 tonight—no processed junk, no guesswork.</p>
-              <button class="home-section__btn" data-page="recipes">Start exploring</button>
+              <button class="home-section__btn nav-element" data-page="recipes">Start exploring</button>
 
               <picture>
                 <source srcset="./dist/img/image-home-hero-large.webp" media="(min-width: 768px)" />
@@ -126,7 +127,7 @@
           <div class="home-section__footer-box wrapper">
             <h2 class="home-section__footer-subtitle subtitle">Ready to cook smarter?</h2>
             <p class="home-section__text text">Hit the button, pick a recipe, and get dinner on the table—fast.</p>
-            <button class="home-section__footer-btn" data-page="recipes">Browse recipes</button>
+            <button class="home-section__footer-btn nav-element" data-page="recipes">Browse recipes</button>
 
             <img width="315" height="391" loading="lazy" class="footer-bg footer-bg--fork desktop-visible"
               src="./dist/img/pattern-fork.svg" alt="">
@@ -283,7 +284,7 @@
           <div class="about-section__footer-box wrapper">
             <h2 class="about-section__footer-subtitle subtitle">Ready to cook smarter?</h2>
             <p class="about-section__text text">Hit the button, pick a recipe, and get dinner on the table—fast.</p>
-            <button class="about-section__footer-btn" data-page="recipes">Browse recipes</button>
+            <button class="about-section__footer-btn nav-element" data-page="recipes">Browse recipes</button>
 
             <img width="315" height="391" loading="lazy" class="footer-bg footer-bg--fork desktop-visible"
               src="./dist/img/pattern-fork.svg" alt="">
