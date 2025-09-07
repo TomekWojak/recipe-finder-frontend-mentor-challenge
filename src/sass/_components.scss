@@ -43,6 +43,12 @@
 		transition: border-color 0.3s;
 
 		&.active {
+			transition: none;
+			border: 1px solid $neutral300 !important;
+			outline: 2px solid $neutral900;
+			outline-offset: 2px;
+		}
+		&:hover {
 			border-color: $neutral900;
 		}
 		&:focus-visible {
@@ -87,6 +93,7 @@
 		cursor: pointer;
 	}
 	&__label {
+		transition: opacity 0.2s;
 		&:focus,
 		&:focus-visible {
 			outline: none;
@@ -95,6 +102,9 @@
 		&:focus .checkbox,
 		&:focus-visible .checkbox {
 			box-shadow: 0 0 0 4px $neutral200;
+		}
+		&:hover {
+			opacity: 0.9;
 		}
 		.checkbox {
 			display: inline-flex;
@@ -106,6 +116,7 @@
 			height: 16px;
 			border: 1px solid $neutral400;
 			border-radius: $radius-full;
+			transition: opacity 0.3s;
 
 			&::after {
 				content: "";
@@ -115,6 +126,47 @@
 				background-color: $neutral900;
 				border-radius: $radius-full;
 			}
+			&:hover {
+				opacity: 0.8;
+			}
+		}
+	}
+	&__search-engine-box {
+		position: relative;
+
+		img {
+			position: absolute;
+			left: 1em;
+			top: 50%;
+			transform: translateY(-50%);
+		}
+	}
+	&__search-engine {
+		display: block;
+		margin-block-start: 1.2rem;
+		padding: $spacing-125 0 $spacing-125 $spacing-500;
+		width: 100%;
+		font-size: 1.8rem;
+		font-weight: $semi-bold;
+		border-radius: $radius-10;
+		background-color: $neutral0;
+		border: 1px solid $neutral300;
+		cursor: pointer;
+		color: $neutral900;
+		transition: border-color 0.3s;
+
+		&::placeholder {
+			opacity: 0.7;
+		}
+		&:hover {
+			border-color: $neutral900;
+		}
+		&:focus,
+		&:focus-visible {
+			border: 1px solid $neutral300;
+			outline: 2px solid $neutral900;
+			outline-offset: 2px;
+			transition: none;
 		}
 	}
 }
@@ -123,16 +175,43 @@ input[data-cook-time] {
 	display: none;
 }
 input[data-prep-time]:checked + .recipes-section__label .checkbox {
-	border: 3px solid $neutral900;
+	border: 2px solid $neutral900;
 }
 input[data-cook-time]:checked + .recipes-section__label .checkbox {
-	border: 3px solid $neutral900;
+	border: 2px solid $neutral900;
 }
 input[data-prep-time]:checked + .recipes-section__label .checkbox::after {
 	display: block;
 }
 input[data-cook-time]:checked + .recipes-section__label .checkbox::after {
 	display: block;
+}
+.max-cook-time-btn {
+	margin-block-start: 1.2rem;
+}
+@media (700px <= width) {
+	.recipes-section {
+		&__controls {
+			display: flex;
+			align-items: center;
+			gap: 1.2rem;
+		}
+		&__search-engine,
+		.max-cook-time-btn {
+			margin: 0;
+		}
+		&__search-engine {
+			text-overflow: ellipsis;
+		}
+		&__select-box {
+			flex-grow: 1;
+			max-width: 20rem;
+		}
+		&__search-engine-box {
+			flex-grow: 2;
+			max-width: 31rem;
+		}
+	}
 }
 @media (768px <= width) {
 	.home-section,
@@ -162,6 +241,13 @@ input[data-cook-time]:checked + .recipes-section__label .checkbox::after {
 					top: -5em;
 				}
 			}
+		}
+	}
+}
+@media (800px <= width) {
+	.recipes-section {
+		&__search-engine-box {
+			margin-inline-start: auto;
 		}
 	}
 }

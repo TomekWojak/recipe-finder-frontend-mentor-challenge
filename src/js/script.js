@@ -5,6 +5,8 @@ document.addEventListener("DOMContentLoaded", function () {
 
 	const filterControls = document.querySelector(".recipes-section__controls");
 	const allSelections = document.querySelectorAll(".recipes-section__select");
+	const maxCookSelect = document.querySelector(".max-cook-time-select");
+	const maxPrepSelect = document.querySelector(".max-prep-time-select");
 	const filterPrepTimeBtn = document.querySelector(".max-prep-time-btn");
 	const filterCookTimeBtn = document.querySelector(".max-cook-time-btn");
 	const btns = [filterCookTimeBtn, filterPrepTimeBtn];
@@ -69,10 +71,15 @@ document.addEventListener("DOMContentLoaded", function () {
 			e.target.matches(".max-prep-time-btn") ||
 			e.target.matches(".max-cook-time-btn")
 		) {
-			btns.forEach((btn) => btn.setAttribute("aria-expanded", "false"));
+			btns.forEach((btn) => {
+				btn.setAttribute("aria-expanded", "false");
+				btn.classList.remove("active");
+			});
 			const clickedBtn = e.target;
 			const btnId = clickedBtn.getAttribute("aria-controls");
 			clickedBtn.setAttribute("aria-expanded", "true");
+			clickedBtn.classList.add("active");
+
 			allSelections.forEach((selection) => {
 				selection.classList.remove("active");
 
@@ -104,9 +111,14 @@ document.addEventListener("DOMContentLoaded", function () {
 		if (
 			isExpanded.length !== 0 &&
 			e.target !== filterCookTimeBtn &&
-			e.target !== filterPrepTimeBtn
+			e.target !== filterPrepTimeBtn &&
+			!maxCookSelect.contains(e.target) &&
+			!maxPrepSelect.contains(e.target)
 		) {
-			btns.forEach((btn) => btn.setAttribute("aria-expanded", "false"));
+			btns.forEach((btn) => {
+				btn.setAttribute("aria-expanded", "false");
+				btn.classList.remove("active");
+			});
 			allSelections.forEach(hideSelection);
 		}
 	});

@@ -239,6 +239,10 @@ body {
 			&:hover {
 				background-color: $neutral800;
 			}
+			&:focus-visible {
+				outline: 2px solid $neutral900;
+				outline-offset: 3px;
+			}
 		}
 	}
 	.nav {
@@ -258,6 +262,8 @@ body {
 			font-size: 1.8rem;
 			font-weight: $semi-bold;
 			color: $neutral900;
+			border-radius: $radius-4;
+			border: 2px solid transparent;
 			cursor: pointer;
 
 			&.active::before {
@@ -277,6 +283,9 @@ body {
 			}
 			&:hover::before {
 				transform: scale(1);
+			}
+			&:focus-visible {
+				border-color: $neutral900;
 			}
 		}
 	}
