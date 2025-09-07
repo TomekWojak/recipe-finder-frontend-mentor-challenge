@@ -305,26 +305,71 @@
               and let something delicious catch your eye.</p>
 
             <div class="recipes-section__controls">
-              <div class="max-prep-time-select-box">
-                <button class="max-prep-time-btn">Max Prep Time <img src="./dist/img/icon-chevron-down.svg" width="20"
-                    height="21" alt=""></button>
-                <ul class="max-prep-time-select">
-                  <li class="max-prep-time-option">
+              <div class="recipes-section__select-box max-prep-time-select-box">
+                <button class="recipes-section__btn max-prep-time-btn" aria-controls="max-prep-time"
+                  aria-expanded="false">Max Prep Time <img src="./dist/img/icon-chevron-down.svg" width="20" height="21"
+                    alt=""></button>
+                <ul class="recipes-section__select max-prep-time-select" id="max-prep-time">
+                  <li class="recipes-section__option max-prep-time-option">
                     <input type="radio" name="max-prep-time" id="0-min" data-prep-time="0" tabindex="-1">
-                    <label class="max-prep-time-label" for="0-min" tabindex="0"><span class="checkbox"></span> 0
+                    <label class="recipes-section__label max-prep-time-label" for="0-min" tabindex="0"><span
+                        class="checkbox"></span> 0
                       minutes</label>
                   </li>
-                  <li class="max-prep-time-option">
+                  <li class="recipes-section__option max-prep-time-option">
                     <input type="radio" name="max-prep-time" id="5-min" data-prep-time="5" tabindex="-1">
-                    <label class="max-prep-time-label" for="5-min" tabindex="0"><span class="checkbox"></span> 5
+                    <label class="recipes-section__label max-prep-time-label" for="5-min" tabindex="0"><span
+                        class="checkbox"></span> 5
                       minutes</label>
                   </li>
-                  <li class="max-prep-time-option">
+                  <li class="recipes-section__option max-prep-time-option">
                     <input type="radio" name="max-prep-time" id="10-min" data-prep-time="10" tabindex="-1">
-                    <label class="max-prep-time-label" for="10-min" tabindex="0"><span class="checkbox"></span> 10
+                    <label class="recipes-section__label max-prep-time-label" for="10-min" tabindex="0"><span
+                        class="checkbox"></span> 10
                       minutes</label>
                   </li>
-                  <li class="max-prep-time-option clear" tabindex="0">
+                  <li class="recipes-section__option max-prep-time-option clear" tabindex="0">
+                    Clear
+                  </li>
+                </ul>
+              </div>
+
+              <div class="recipes-section__select-box max-cook-time-select-box">
+                <button class="recipes-section__btn max-cook-time-btn" aria-controls="max-cook-time"
+                  aria-expanded="false">Max Cook Time <img src="./dist/img/icon-chevron-down.svg" width="20" height="21"
+                    alt=""></button>
+                <ul class="recipes-section__select max-cook-time-select" id="max-cook-time">
+                  <li class="recipes-section__option max-cook-time-option">
+                    <input type="radio" name="max-cook-time" id="0min" data-cook-time="0" tabindex="-1">
+                    <label class="recipes-section__label max-cook-time-label" for="0min" tabindex="0"><span
+                        class="checkbox"></span> 0
+                      minutes</label>
+                  </li>
+                  <li class="recipes-section__option max-cook-time-option">
+                    <input type="radio" name="max-cook-time" id="5min" data-cook-time="5" tabindex="-1">
+                    <label class="recipes-section__label max-cook-time-label" for="5min" tabindex="0"><span
+                        class="checkbox"></span> 5
+                      minutes</label>
+                  </li>
+                  <li class="recipes-section__option max-cook-time-option">
+                    <input type="radio" name="max-cook-time" id="10min" data-cook-time="10" tabindex="-1">
+                    <label class="recipes-section__label max-cook-time-label" for="10min" tabindex="0"><span
+                        class="checkbox"></span> 10
+                      minutes</label>
+                  </li>
+                  <li class="recipes-section__option max-cook-time-option">
+                    <input type="radio" name="max-cook-time" id="15min" data-cook-time="15" tabindex="-1">
+                    <label class="recipes-section__label max-cook-time-label" for="15min" tabindex="0"><span
+                        class="checkbox"></span> 15
+                      minutes</label>
+                  </li>
+                  <li class="recipes-section__option max-cook-time-option">
+                    <input type="radio" name="max-cook-time" id="20min" data-cook-time="20" tabindex="-1">
+                    <label class="recipes-section__label max-cook-time-label" for="20min" tabindex="0"><span
+                        class="checkbox"></span> 20
+                      minutes</label>
+                  </li>
+                  <li class="recipes-section__option max-cook-time-option clear" tabindex="0">
                     Clear
                   </li>
                 </ul>
