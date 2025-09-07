@@ -1,0 +1,33 @@
+@use "./variables" as *;
+@use "./mixins" as *;
+
+.recipes-section {
+	color: $neutral900;
+	&__content {
+		padding: $spacing-600 var(--inline-spacing);
+	}
+	&__text {
+		margin: 0.8em auto 0;
+		max-width: 70rem;
+	}
+	&__controls {
+		margin-block-start: $spacing-600;
+	}
+}
+
+@media (768px <= width) {
+	.recipes-section {
+		&__content {
+			padding: $spacing-800 var(--inline-spacing) $spacing-600;
+		}
+	}
+}
+
+@media (992px <= width) {
+	.recipes-section {
+		&__content {
+			padding: $spacing-800 var(--inline-spacing);
+			text-align: center;
+		}
+	}
+}

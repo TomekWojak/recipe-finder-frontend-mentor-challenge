@@ -3,6 +3,7 @@
 @use "./about" as *;
 @use "./mixins" as *;
 @use "./components" as *;
+@use "./recipes" as *;
 *,
 *::before,
 *::after {

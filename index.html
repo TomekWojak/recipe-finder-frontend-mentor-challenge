@@ -44,7 +44,7 @@
       </div>
     </header>
     <main>
-      <section class="home-section page page-active" data-section="home">
+      <section class="home-section page page-active" data-section="home" style="display: none;">
         <section class="home-section__top">
           <div class="home-section__content wrapper">
             <div class="home-section__header">
@@ -290,6 +290,49 @@
               src="./dist/img/pattern-fork.svg" alt="">
             <img width="339" height="339" loading="lazy" class="footer-bg footer-bg--knife desktop-visible"
               src="./dist/img/pattern-knife.svg" alt="">
+          </div>
+        </section>
+      </section>
+
+      <!-- Recipes section -->
+      <section class="recipes-section page" data-section="recipes"
+        style="display: block; opacity: 1;transform: translateY(0);">
+        <section class="recipes-section__recipes">
+          <div class="recipes-section__content wrapper">
+            <h5 class="recipes-section__subtitle subtitle">Explore our simple, healthy recipes</h5>
+            <p class="recipes-section__text text">Discover eight quick, whole-food dishes that fit real-life schedules
+              and taste amazing. Use the search bar to find a recipe by name or ingredient, or simply scroll the list
+              and let something delicious catch your eye.</p>
+
+            <div class="recipes-section__controls">
+              <div class="max-prep-time-select-box">
+                <button class="max-prep-time-btn">Max Prep Time <img src="./dist/img/icon-chevron-down.svg" width="20"
+                    height="21" alt=""></button>
+                <ul class="max-prep-time-select">
+                  <li class="max-prep-time-option">
+                    <input type="radio" name="max-prep-time" id="0-min" data-prep-time="0" tabindex="-1">
+                    <label class="max-prep-time-label" for="0-min" tabindex="0"><span class="checkbox"></span> 0
+                      minutes</label>
+                  </li>
+                  <li class="max-prep-time-option">
+                    <input type="radio" name="max-prep-time" id="5-min" data-prep-time="5" tabindex="-1">
+                    <label class="max-prep-time-label" for="5-min" tabindex="0"><span class="checkbox"></span> 5
+                      minutes</label>
+                  </li>
+                  <li class="max-prep-time-option">
+                    <input type="radio" name="max-prep-time" id="10-min" data-prep-time="10" tabindex="-1">
+                    <label class="max-prep-time-label" for="10-min" tabindex="0"><span class="checkbox"></span> 10
+                      minutes</label>
+                  </li>
+                  <li class="max-prep-time-option clear" tabindex="0">
+                    Clear
+                  </li>
+                </ul>
+              </div>
+            </div>
+            <div class="recipes-section__recipes-box">
+
+            </div>
           </div>
         </section>
       </section>
