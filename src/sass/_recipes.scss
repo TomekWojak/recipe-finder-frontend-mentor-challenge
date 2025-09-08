@@ -9,12 +9,115 @@
 	&__controls {
 		margin-block-start: $spacing-600;
 	}
-}
+	&__recipes-box {
+		margin-block-start: 2.4rem;
+		display: grid;
+		grid-template-columns: 1fr;
+		gap: $spacing-400;
+	}
+	&__recipe {
+		background-color: $neutral0;
+		padding: $spacing-100;
+		border: 1px solid $neutral300;
+		border-radius: $radius-10;
+	}
+	&__img {
+		display: block;
+		width: 100%;
+		height: auto;
+		border-radius: $radius-10;
+	}
+	&__recipe-body {
+		padding-block-start: $spacing-200;
+	}
+	&__recipe-title {
+		font-size: 2rem;
+		color: $neutral900;
+		font-weight: $bold;
+	}
+	&__recipe-text {
+		margin-block-start: $spacing-125;
+		color: $neutral800;
+		font-size: 1.6rem;
+		font-weight: $medium;
+	}
+	&__recipe-info {
+		margin-block-start: $spacing-200;
 
+		span {
+			display: inline-block;
+			font-size: 1.6rem;
+			font-weight: $medium;
+			min-width: fit-content;
+
+			img {
+				vertical-align: middle;
+			}
+		}
+	}
+	&__recipe-servings {
+		width: 30%;
+	}
+	&__recipe-prep {
+		width: 50%;
+		margin-inline-start: $spacing-200;
+	}
+	&__recipe-cook {
+		margin-block-start: $spacing-100;
+	}
+	&__view-recipe {
+		display: block;
+		margin-block-start: $spacing-200;
+		width: 100%;
+		padding: $spacing-150 $spacing-400;
+		border: none;
+		background-color: $neutral900;
+		text-decoration: none;
+		border-radius: 30px;
+		color: $neutral0;
+		font-size: 1.6rem;
+		font-weight: $bold;
+		text-align: center;
+	}
+}
+@media (600px <= width) {
+	.recipes-section {
+		&__recipe-info {
+			display: flex;
+			align-items: center;
+			justify-content: flex-start;
+			gap: 1.6rem;
+		}
+		&__recipe-servings,
+		&__recipe-prep,
+		&__recipe-cook {
+			margin: 0;
+			width: fit-content;
+		}
+	}
+}
 @media (768px <= width) {
 	.recipes-section {
 		&__content {
 			padding: $spacing-800 var(--inline-spacing) $spacing-600;
+		}
+		&__recipes-box {
+			grid-template-columns: repeat(2, 1fr);
+		}
+		&__recipe-info {
+			flex-wrap: wrap;
+		}
+		&__view-recipe {
+			transition: background-color 0.3s;
+
+			&:hover {
+				background-color: $neutral800;
+			}
+			&:focus-visible {
+				outline: 2px solid $neutral900;
+				outline-offset: 2px;
+				background-color: $neutral800;
+			}
 		}
 	}
 }
@@ -34,6 +137,9 @@
 		}
 		&__controls {
 			margin-block-start: $spacing-800;
+		}
+		&__recipes-box {
+			grid-template-columns: repeat(3, 1fr);
 		}
 	}
 }

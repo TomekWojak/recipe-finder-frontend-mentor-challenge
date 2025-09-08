@@ -1,4 +1,5 @@
 import { initNavbar } from "./navbar.min.js";
+import { servePages } from "./pages.min.js";
 
 document.addEventListener("DOMContentLoaded", function () {
 	const filterControls = document.querySelector(".recipes-section__controls");
@@ -10,24 +11,9 @@ document.addEventListener("DOMContentLoaded", function () {
 	const btns = [filterCookTimeBtn, filterPrepTimeBtn];
 
 	initNavbar();
-	// handle pages
+	servePages();
 
-	const handlePages = (e) => {
-		const element = e.target.closest("[data-page]");
-
-		if (!element) return;
-		const allPages = document.querySelectorAll(".page[data-section]");
-
-		const btnData = element.dataset.page;
-		const pageToShow = document.querySelector(
-			`.page[data-section="${btnData}"]`
-		);
-
-		if (!pageToShow) return;
-
-		allPages.forEach((page) => page.classList.remove("page-active"));
-		pageToShow.classList.add("page-active");
-	};
+	
 
 	// handle filters
 
@@ -64,9 +50,6 @@ document.addEventListener("DOMContentLoaded", function () {
 		selection.classList.remove("active");
 	};
 
-	document.body.addEventListener("click", (e) => {
-		handlePages(e);
-	});
 	window.addEventListener("click", (e) => {
 		const isExpanded = btns.filter(
 			(btn) => btn.getAttribute("aria-expanded") === "true"
