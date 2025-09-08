@@ -7,12 +7,11 @@ const terser = require("gulp-terser");
 const imagemin = require("gulp-imagemin");
 const sourcemaps = require("gulp-sourcemaps");
 const clean = require("gulp-clean");
-const kit = require("gulp-kit");
+const plumber = require("gulp-plumber");
 const browserSync = require("browser-sync").create();
 const reload = browserSync.reload;
 
 const paths = {
-	html: "./html/**/*.kit",
 	sass: "./src/sass/**/*.scss",
 	js: "./src/js/**/*.js",
 	img: "./src/img/*",
@@ -37,6 +36,14 @@ function sassCompiler(done) {
 function javaScript(done) {
 	src(paths.js)
 		.pipe(sourcemaps.init())
+		.pipe(
+			plumber({
+				errorHandler: function (err) {
+					console.error("Błąd JS:", err.message);
+					this.emit("end");
+				},
+			})
+		)
 		.pipe(terser())
 		.pipe(rename({ suffix: ".min" }))
 		.pipe(sourcemaps.write())
@@ -46,11 +53,6 @@ function javaScript(done) {
 
 function convertImages(done) {
 	src(paths.img).pipe(imagemin()).pipe(dest(paths.imgDest));
-	done();
-}
-
-function handleKits(done) {
-	src(paths.html).pipe(kit()).pipe(dest("./"));
 	done();
 }
 
@@ -73,17 +75,12 @@ function watchForChanges(done) {
 	watch("./*.html").on("change", reload);
 	watch(
 		[paths.html, paths.sass, paths.js],
-		parallel(handleKits, sassCompiler, javaScript)
+		parallel(sassCompiler, javaScript)
 	).on("change", reload);
 	watch(paths.img, convertImages).on("change", reload);
 	done();
 }
 
-const mainFunctions = parallel(
-	handleKits,
-	sassCompiler,
-	javaScript,
-	convertImages
-);
+const mainFunctions = parallel(sassCompiler, javaScript, convertImages);
 exports.cleanStuff = cleanStuff;
 exports.default = series(mainFunctions, startBrowserSync, watchForChanges);

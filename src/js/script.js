@@ -1,5 +1,5 @@
 import { initNavbar } from "./navbar.min.js";
-import { servePages } from "./pages.min.js";
+import { createRecipe } from "./recipes.min.js";
 
 document.addEventListener("DOMContentLoaded", function () {
 	const filterControls = document.querySelector(".recipes-section__controls");
@@ -10,11 +10,48 @@ document.addEventListener("DOMContentLoaded", function () {
 	const filterCookTimeBtn = document.querySelector(".max-cook-time-btn");
 	const btns = [filterCookTimeBtn, filterPrepTimeBtn];
 
+	const recipesBox = document.querySelector(".recipes-section__recipes-box");
+	const RECIPES_DATA = "/data.json";
+
 	initNavbar();
-	servePages();
 
-	
+	let isRendered;
+	const handlePages = (e) => {
+		const element = e.target.closest("[data-page]");
 
+		if (!element) return;
+		const allPages = document.querySelectorAll(".page[data-section]");
+
+		const btnData = element.dataset.page;
+		const pageToShow = document.querySelector(
+			`.page[data-section="${btnData}"]`
+		);
+		
+		if(btnData === 'recipes') {
+			renderRecipes()
+		}
+
+		if (!pageToShow) return;
+
+		allPages.forEach((page) => page.classList.remove("page-active"));
+		pageToShow.classList.add("page-active");
+	};
+
+	// render pages
+	const renderRecipes = () => {
+		if (isRendered) return;
+
+		fetch(RECIPES_DATA)
+			.then((res) => res.json())
+			.then((data) => {
+				if (!data) return;
+
+				data.forEach((recipe) => {
+					recipesBox.append(createRecipe(recipe));
+				});
+			});
+		isRendered = true;
+	};
 	// handle filters
 
 	const handleFiltersSelections = (e) => {
@@ -69,5 +106,9 @@ document.addEventListener("DOMContentLoaded", function () {
 			allSelections.forEach(hideSelection);
 		}
 	});
+	document.body.addEventListener("click", (e) => {
+		handlePages(e);
+	});
+
 	filterControls.addEventListener("click", handleFiltersSelections);
 });

@@ -16,10 +16,13 @@
 		gap: $spacing-400;
 	}
 	&__recipe {
+		display: flex;
+		flex-direction: column;
 		background-color: $neutral0;
 		padding: $spacing-100;
 		border: 1px solid $neutral300;
 		border-radius: $radius-10;
+		overflow: hidden;
 	}
 	&__img {
 		display: block;
@@ -28,21 +31,29 @@
 		border-radius: $radius-10;
 	}
 	&__recipe-body {
+		height: 100%;
+		display: flex;
+		flex-direction: column;
 		padding-block-start: $spacing-200;
 	}
 	&__recipe-title {
 		font-size: 2rem;
 		color: $neutral900;
 		font-weight: $bold;
+		white-space: nowrap;
+		overflow: hidden;
+		text-overflow: ellipsis;
 	}
 	&__recipe-text {
 		margin-block-start: $spacing-125;
+		margin-block-end: $spacing-200;
 		color: $neutral800;
 		font-size: 1.6rem;
 		font-weight: $medium;
 	}
 	&__recipe-info {
-		margin-block-start: $spacing-200;
+		margin-block-start: auto;
+		margin-block-end: $spacing-200;
 
 		span {
 			display: inline-block;
@@ -67,7 +78,6 @@
 	}
 	&__view-recipe {
 		display: block;
-		margin-block-start: $spacing-200;
 		width: 100%;
 		padding: $spacing-150 $spacing-400;
 		border: none;
@@ -140,6 +150,17 @@
 		}
 		&__recipes-box {
 			grid-template-columns: repeat(3, 1fr);
+		}
+	}
+}
+@media (1100px <= width) {
+	.recipes-section {
+		&__recipe-servings,
+		&__recipe-prep {
+			width: fit-content;
+		}
+		&__recipe-cook {
+			width: 100%;
 		}
 	}
 }
