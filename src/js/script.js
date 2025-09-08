@@ -83,15 +83,16 @@ document.addEventListener("DOMContentLoaded", function () {
 			const matchesText =
 				title.includes(textValue) || description.includes(textValue);
 			const matchesPrep =
-				selectedPrepValue != null ? prepTime == selectedPrepValue : true;
+				selectedPrepValue != null ? prepTime === selectedPrepValue : true;
 			const matchesCook =
-				selectedCookValue != null ? cookTime == selectedCookValue : true;
+				selectedCookValue != null ? cookTime === selectedCookValue : true;
 			if (matchesText && matchesPrep && matchesCook) {
 				recipe.classList.remove("hidden");
 			} else {
 				recipe.classList.add("hidden");
 			}
 		});
+		checkIfNotValidFilter();
 	};
 	const uncheckInputs = (e) => {
 		const select = e.target.closest(".recipes-section__select");
@@ -100,6 +101,27 @@ document.addEventListener("DOMContentLoaded", function () {
 			const radioInput = label.previousElementSibling;
 			radioInput.checked = false;
 		});
+	};
+	let errorTxt;
+	const checkIfNotValidFilter = () => {
+		const recipes = document.querySelectorAll(
+			".recipes-section__recipe:not(.hidden)"
+		);
+
+		if (errorTxt) errorTxt.remove();
+
+		if (recipes?.length === 0) {
+			errorTxt = document.createElement("p");
+			recipesBox.classList.add("error-visible");
+			errorTxt.textContent = "No matching filters";
+			recipesBox.append(errorTxt);
+		} else {
+			recipesBox.classList.remove("error-visible");
+
+			if (!errorTxt) return;
+
+			errorTxt.remove();
+		}
 	};
 
 	const handleFiltersSelections = (e) => {
