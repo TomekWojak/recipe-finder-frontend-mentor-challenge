@@ -33,6 +33,9 @@ export const createRecipe = ({
 	const viewRecipeBtn = createElement("a", ["recipes-section__view-recipe"], {
 		href: "/",
 	});
+
+	recipePrep.dataset.prepTime = prepMinutes;
+	recipeCook.dataset.cookTime = cookMinutes;
 	// end of creating elements
 
 	// adding elements content

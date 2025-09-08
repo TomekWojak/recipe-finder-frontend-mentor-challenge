@@ -23,6 +23,10 @@
 		border: 1px solid $neutral300;
 		border-radius: $radius-10;
 		overflow: hidden;
+
+		&.hidden {
+			display: none;
+		}
 	}
 	&__img {
 		display: block;

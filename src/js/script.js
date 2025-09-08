@@ -13,6 +13,10 @@ document.addEventListener("DOMContentLoaded", function () {
 	const recipesBox = document.querySelector(".recipes-section__recipes-box");
 	const RECIPES_DATA = "/data.json";
 
+	const searchEngine = document.querySelector(
+		".recipes-section__search-engine"
+	);
+
 	initNavbar();
 
 	let isRendered;
@@ -26,9 +30,9 @@ document.addEventListener("DOMContentLoaded", function () {
 		const pageToShow = document.querySelector(
 			`.page[data-section="${btnData}"]`
 		);
-		
-		if(btnData === 'recipes') {
-			renderRecipes()
+
+		if (btnData === "recipes") {
+			renderRecipes();
 		}
 
 		if (!pageToShow) return;
@@ -38,21 +42,65 @@ document.addEventListener("DOMContentLoaded", function () {
 	};
 
 	// render pages
-	const renderRecipes = () => {
+	const renderRecipes = async () => {
 		if (isRendered) return;
 
-		fetch(RECIPES_DATA)
-			.then((res) => res.json())
-			.then((data) => {
-				if (!data) return;
+		try {
+			const response = await fetch(RECIPES_DATA);
 
-				data.forEach((recipe) => {
-					recipesBox.append(createRecipe(recipe));
-				});
+			if (!response.ok) {
+				console.error("Error, downloanding resources failed");
+			}
+			const data = await response.json();
+			data.forEach((recipe) => {
+				recipesBox.append(createRecipe(recipe));
 			});
+		} catch (error) {
+			console.error("Error:", error);
+		}
+
 		isRendered = true;
 	};
+
 	// handle filters
+	let selectedPrepValue;
+	let selectedCookValue;
+	const filterRecipes = () => {
+		const allRecipes = document.querySelectorAll(".recipes-section__recipe");
+		const textValue = searchEngine.value.toLowerCase();
+		allRecipes.forEach((recipe) => {
+			const title = recipe
+				.querySelector(".recipes-section__recipe-title")
+				.textContent.toLowerCase();
+			const description = recipe
+				.querySelector(".recipes-section__recipe-text")
+				.textContent.toLowerCase();
+			const prepTime = recipe.querySelector(".recipes-section__recipe-prep")
+				.dataset.prepTime;
+			const cookTime = recipe.querySelector(".recipes-section__recipe-cook")
+				.dataset.cookTime;
+
+			const matchesText =
+				title.includes(textValue) || description.includes(textValue);
+			const matchesPrep =
+				selectedPrepValue != null ? prepTime == selectedPrepValue : true;
+			const matchesCook =
+				selectedCookValue != null ? cookTime == selectedCookValue : true;
+			if (matchesText && matchesPrep && matchesCook) {
+				recipe.classList.remove("hidden");
+			} else {
+				recipe.classList.add("hidden");
+			}
+		});
+	};
+	const uncheckInputs = (e) => {
+		const select = e.target.closest(".recipes-section__select");
+		const labels = select.querySelectorAll(".recipes-section__label");
+		labels.forEach((label) => {
+			const radioInput = label.previousElementSibling;
+			radioInput.checked = false;
+		});
+	};
 
 	const handleFiltersSelections = (e) => {
 		if (
@@ -87,6 +135,25 @@ document.addEventListener("DOMContentLoaded", function () {
 		selection.classList.remove("active");
 	};
 
+	allSelections.forEach((selection) =>
+		selection.addEventListener("click", (e) => {
+			if (e.target.matches(".max-prep-time-label")) {
+				selectedPrepValue = e.target.previousElementSibling.dataset.prepTime;
+				filterRecipes();
+			} else if (e.target.matches(".max-prep-time-option.clear")) {
+				selectedPrepValue = null;
+				filterRecipes();
+				uncheckInputs(e);
+			} else if (e.target.matches(".max-cook-time-label")) {
+				selectedCookValue = e.target.previousElementSibling.dataset.cookTime;
+				filterRecipes();
+			} else if (e.target.matches(".max-cook-time-option.clear")) {
+				selectedCookValue = null;
+				filterRecipes();
+				uncheckInputs(e);
+			}
+		})
+	);
 	window.addEventListener("click", (e) => {
 		const isExpanded = btns.filter(
 			(btn) => btn.getAttribute("aria-expanded") === "true"
@@ -109,6 +176,6 @@ document.addEventListener("DOMContentLoaded", function () {
 	document.body.addEventListener("click", (e) => {
 		handlePages(e);
 	});
-
+	searchEngine.addEventListener("input", filterRecipes);
 	filterControls.addEventListener("click", handleFiltersSelections);
 });
