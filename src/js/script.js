@@ -67,7 +67,7 @@ document.addEventListener("DOMContentLoaded", function () {
 	let selectedCookValue;
 	const filterRecipes = () => {
 		const allRecipes = document.querySelectorAll(".recipes-section__recipe");
-		const textValue = searchEngine.value.toLowerCase();
+		const textValue = searchEngine.value.trim().toLowerCase();
 		allRecipes.forEach((recipe) => {
 			const title = recipe
 				.querySelector(".recipes-section__recipe-title")
@@ -75,10 +75,10 @@ document.addEventListener("DOMContentLoaded", function () {
 			const description = recipe
 				.querySelector(".recipes-section__recipe-text")
 				.textContent.toLowerCase();
-			const prepTime = recipe.querySelector(".recipes-section__recipe-prep")
-				.dataset.prepTime;
-			const cookTime = recipe.querySelector(".recipes-section__recipe-cook")
-				.dataset.cookTime;
+			const prepTxt = recipe.querySelector(".recipes-section__recipe-prep");
+			const cookTxt = recipe.querySelector(".recipes-section__recipe-cook");
+			const prepTime = prepTxt?.dataset?.prepTime;
+			const cookTime = cookTxt?.dataset?.cookTime;
 
 			const matchesText =
 				title.includes(textValue) || description.includes(textValue);
