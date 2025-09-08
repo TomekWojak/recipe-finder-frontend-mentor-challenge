@@ -94,7 +94,7 @@
 	}
 	&__label {
 		transition: opacity 0.2s;
-		&:focus,
+		// &:focus,
 		&:focus-visible {
 			outline: none;
 			border-color: $neutral900;
@@ -116,7 +116,7 @@
 			height: 16px;
 			border: 1px solid $neutral400;
 			border-radius: $radius-full;
-			transition: opacity 0.3s;
+			transition: opacity 0.3s, box-shadow .3s;
 
 			&::after {
 				content: "";

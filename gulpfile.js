@@ -3,8 +3,7 @@ const sass = require("gulp-sass")(require("sass"));
 const cssnano = require("gulp-cssnano");
 const autoprefixer = require("gulp-autoprefixer");
 const rename = require("gulp-rename");
-const babel = require("gulp-babel");
-const uglify = require("gulp-uglify");
+const terser = require("gulp-terser");
 const imagemin = require("gulp-imagemin");
 const sourcemaps = require("gulp-sourcemaps");
 const clean = require("gulp-clean");
@@ -38,8 +37,7 @@ function sassCompiler(done) {
 function javaScript(done) {
 	src(paths.js)
 		.pipe(sourcemaps.init())
-		.pipe(babel({ presets: ["@babel/env"] }))
-		.pipe(uglify())
+		.pipe(terser())
 		.pipe(rename({ suffix: ".min" }))
 		.pipe(sourcemaps.write())
 		.pipe(dest(paths.jsDest));

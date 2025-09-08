@@ -12,7 +12,7 @@
     href="https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,opsz,wght@0,6..12,200..1000;1,6..12,200..1000&family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap"
     rel="stylesheet">
   <link rel="stylesheet" href="./dist/css/style.min.css">
-  <script src="./dist/js/script.min.js" defer></script>
+  <script type="module" src="./dist/js/script.min.js" defer></script>
 </head>
 
 <body>
@@ -44,7 +44,7 @@
       </div>
     </header>
     <main>
-      <section class="home-section page page-active" data-section="home" style="display: none;">
+      <section class="home-section page page-active" data-section="home">
         <section class="home-section__top">
           <div class="home-section__content wrapper">
             <div class="home-section__header">
@@ -295,8 +295,8 @@
       </section>
 
       <!-- Recipes section -->
-      <section class="recipes-section page" data-section="recipes"
-        style="display: block; opacity: 1;transform: translateY(0);">
+      <section class="recipes-section page" data-section="recipes">
+        <!-- style="display: block; opacity: 1;transform: translateY(0)"; -->
         <section class="recipes-section__recipes">
           <div class="recipes-section__content wrapper">
             <h5 class="recipes-section__subtitle subtitle">Explore our simple, healthy recipes</h5>
