@@ -9,7 +9,8 @@ document.addEventListener("DOMContentLoaded", function () {
 	const filterPrepTimeBtn = document.querySelector(".max-prep-time-btn");
 	const filterCookTimeBtn = document.querySelector(".max-cook-time-btn");
 	const btns = [filterCookTimeBtn, filterPrepTimeBtn];
-
+	const selectLabels = document.querySelectorAll(".recipes-section__label");
+	const selectClearBtns = document.querySelectorAll(".clear");
 	const recipesBox = document.querySelector(".recipes-section__recipes-box");
 	const RECIPES_DATA = "/data.json";
 
@@ -157,6 +158,25 @@ document.addEventListener("DOMContentLoaded", function () {
 		selection.classList.remove("active");
 	};
 
+	const handleKeyNavigation = (e) => {
+		if (e.key === "Enter") {
+			const input = e.target.previousElementSibling;
+			input.checked = true;
+			if (e.target.matches(".max-prep-time-label")) {
+				selectedPrepValue = e.target.previousElementSibling.dataset.prepTime;
+			} else if (e.target.matches(".max-prep-time-option.clear")) {
+				selectedPrepValue = null;
+				uncheckInputs(e);
+			} else if (e.target.matches(".max-cook-time-label")) {
+				selectedCookValue = e.target.previousElementSibling.dataset.cookTime;
+			} else if (e.target.matches(".max-cook-time-option.clear")) {
+				selectedCookValue = null;
+				uncheckInputs(e);
+			}
+			filterRecipes();
+		}
+	};
+
 	allSelections.forEach((selection) =>
 		selection.addEventListener("click", (e) => {
 			if (e.target.matches(".max-prep-time-label")) {
@@ -176,6 +196,20 @@ document.addEventListener("DOMContentLoaded", function () {
 			}
 		})
 	);
+	const hideAllSelect = (hideSelection) => {
+		btns.forEach((btn) => {
+			btn.setAttribute("aria-expanded", "false");
+			btn.classList.remove("active");
+		});
+		allSelections.forEach(hideSelection);
+	};
+
+	selectLabels.forEach((label) =>
+		label.addEventListener("keydown", handleKeyNavigation)
+	);
+	selectClearBtns.forEach((clear) =>
+		clear.addEventListener("keydown", handleKeyNavigation)
+	);
 	window.addEventListener("click", (e) => {
 		const isExpanded = btns.filter(
 			(btn) => btn.getAttribute("aria-expanded") === "true"
@@ -188,15 +222,16 @@ document.addEventListener("DOMContentLoaded", function () {
 			!maxCookSelect.contains(e.target) &&
 			!maxPrepSelect.contains(e.target)
 		) {
-			btns.forEach((btn) => {
-				btn.setAttribute("aria-expanded", "false");
-				btn.classList.remove("active");
-			});
-			allSelections.forEach(hideSelection);
+			hideAllSelect(hideSelection);
 		}
 	});
 	document.body.addEventListener("click", (e) => {
 		handlePages(e);
+	});
+	searchEngine.addEventListener("keydown", (e) => {
+		if (e.key === "Enter") {
+			hideAllSelect(hideSelection);
+		}
 	});
 	searchEngine.addEventListener("input", filterRecipes);
 	filterControls.addEventListener("click", handleFiltersSelections);
