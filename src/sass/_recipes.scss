@@ -92,8 +92,101 @@
 		font-size: 1.6rem;
 		font-weight: $bold;
 		text-align: center;
+		cursor: pointer;
 	}
 }
+
+// article
+
+.recipe-article {
+	&__content {
+		padding: $spacing-600 var(--inline-spacing);
+		color: $neutral900;
+	}
+	&__breadcrumbs {
+		margin-block-end: $spacing-200;
+
+		&-path {
+			font-size: 1.8rem;
+			font-weight: $semi-bold;
+			color: rgba(22, 58, 52, 0.6);
+		}
+		&-page {
+			margin-inline-end: 0.3em;
+		}
+		&-recipe-name {
+			color: $neutral900;
+		}
+	}
+	&__img-box {
+		margin-block-end: $spacing-500;
+	}
+	&__img {
+		width: 100%;
+		display: block;
+		height: auto;
+		border-radius: $radius-10;
+	}
+	&__subtitle {
+		color: $neutral900;
+	}
+	&__info {
+		display: flex;
+		justify-content: flex-start;
+		flex-wrap: wrap;
+		gap: $spacing-200;
+		margin-block-start: $spacing-250;
+
+		span {
+			font-size: 1.8rem;
+			min-width: fit-content;
+			font-weight: $semi-bold;
+
+			img {
+				margin-inline-end: $spacing-100;
+				vertical-align: middle;
+			}
+		}
+	}
+	&__servings {
+		width: 30%;
+		min-width: fit-content;
+	}
+	&__prep {
+		width: 30%;
+	}
+	&__about {
+		margin: $spacing-250 0 $spacing-200;
+		font-size: 2.4rem;
+		font-weight: $bold;
+	}
+	&__list {
+		display: flex;
+		flex-direction: column;
+		gap: $spacing-100;
+		list-style: none;
+	}
+	&__item {
+		display: flex;
+		align-items: center;
+		gap: $spacing-100;
+		color: $neutral800;
+		font-size: 2rem;
+
+		img {
+			display: block;
+			width: 24px;
+			height: auto;
+		}
+	}
+	&__divider {
+		display: block;
+		margin: $spacing-600 0;
+		width: 100%;
+		border: 1px solid $neutral300;
+	}
+}
+
 @media (600px <= width) {
 	.recipes-section {
 		&__recipe-info {
@@ -107,6 +200,14 @@
 		&__recipe-cook {
 			margin: 0;
 			width: fit-content;
+		}
+	}
+	.recipe-article {
+		&__info {
+			gap: $spacing-400;
+			span {
+				width: fit-content;
+			}
 		}
 	}
 }
@@ -135,7 +236,19 @@
 		}
 	}
 }
-
+@media (800px <= width) {
+	.recipe-article {
+		&__box {
+			display: flex;
+			align-items: flex-start;
+			gap: $spacing-500;
+		}
+		&__text-box,
+		&__img-box {
+			width: 60%;
+		}
+	}
+}
 @media (992px <= width) {
 	.recipes-section {
 		&__content {
@@ -156,6 +269,11 @@
 			grid-template-columns: repeat(3, 1fr);
 		}
 	}
+	.recipe-article {
+		&__content {
+			padding: $spacing-600 var(--inline-spacing) $spacing-1200;
+		}
+	}
 }
 @media (1100px <= width) {
 	.recipes-section {
@@ -165,6 +283,20 @@
 		}
 		&__recipe-cook {
 			width: 100%;
+		}
+	}
+	.recipe-article {
+		&__box {
+			display: flex;
+			align-items: flex-start;
+			gap: $spacing-500;
+		}
+		&__text-box,
+		&__img-box {
+			width: 50%;
+		}
+		&__text-box {
+			width: 50%;
 		}
 	}
 }

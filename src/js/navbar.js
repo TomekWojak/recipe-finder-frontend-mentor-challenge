@@ -1,8 +1,4 @@
-export const initNavbar = () => {
-	const headerToggler = document.querySelector(".header__toggler");
-	const mobileNav = document.querySelector(".nav__links-mobile");
-	const desktopLinks = document.querySelectorAll(".nav__links-desktop-li");
-
+export const initNavbar = (desktopLinks, headerToggler, mobileNav) => {
 	const handleMobileNavigation = () => {
 		const isExpanded = headerToggler.getAttribute("aria-expanded");
 

@@ -1,7 +1,11 @@
 import { initNavbar } from "./navbar.min.js";
-import { createRecipe } from "./recipes.min.js";
+import { createRecipe, createRecipeArticle } from "./recipes.min.js";
 
 document.addEventListener("DOMContentLoaded", function () {
+	const desktopLinks = document.querySelectorAll(".nav__links-desktop-li");
+	const headerToggler = document.querySelector(".header__toggler");
+	const mobileNav = document.querySelector(".nav__links-mobile");
+
 	const filterControls = document.querySelector(".recipes-section__controls");
 	const allSelections = document.querySelectorAll(".recipes-section__select");
 	const maxCookSelect = document.querySelector(".max-cook-time-select");
@@ -18,7 +22,9 @@ document.addEventListener("DOMContentLoaded", function () {
 		".recipes-section__search-engine"
 	);
 
-	initNavbar();
+	const articleContent = document.querySelector(".recipe-article__content");
+
+	initNavbar(desktopLinks, headerToggler, mobileNav);
 
 	let isRendered;
 	const handlePages = (e) => {
@@ -40,6 +46,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
 		allPages.forEach((page) => page.classList.remove("page-active"));
 		pageToShow.classList.add("page-active");
+		checkIfRecipeBtn(e);
 	};
 
 	// render pages
@@ -56,13 +63,37 @@ document.addEventListener("DOMContentLoaded", function () {
 			data.forEach((recipe) => {
 				recipesBox.append(createRecipe(recipe));
 			});
+
+			recipesBox.addEventListener("click", (e) => {
+				if (e.target.matches(".recipes-section__view-recipe")) {
+					const recipeToShow = showArticle(e);
+					data.forEach((recipe) => {
+						createRecipeArticle(recipe, recipeToShow, articleContent);
+					});
+				}
+			});
 		} catch (error) {
 			console.error("Error:", error);
 		}
 
 		isRendered = true;
 	};
+	const showArticle = (e) => {
+		const btnName = e.target.dataset.pageName;
+		const btnId = e.target.dataset.recipeId;
 
+		const allPages = document.querySelectorAll(".page[data-section]");
+		const pageToShow = document.querySelector(
+			`.page[data-section="${btnName}"]`
+		);
+
+		if (!pageToShow) return;
+
+		allPages.forEach((page) => page.classList.remove("page-active"));
+		pageToShow.classList.add("page-active");
+
+		return parseInt(btnId);
+	};
 	// handle filters
 	let selectedPrepValue;
 	let selectedCookValue;
@@ -94,6 +125,20 @@ document.addEventListener("DOMContentLoaded", function () {
 			}
 		});
 		checkIfNotValidFilter();
+	};
+	const checkIfRecipeBtn = (e) => {
+		if (e.target.matches(".nav-btn")) {
+			const btnId = e.target.dataset.page;
+			const desktopLinks = document.querySelectorAll(".nav__links-desktop-li");
+
+			desktopLinks.forEach((link) => {
+				link.classList.remove("active");
+				const linkData = link.dataset.page;
+				if (linkData !== btnId) return;
+
+				link.classList.add("active");
+			});
+		}
 	};
 	const uncheckInputs = (e) => {
 		const select = e.target.closest(".recipes-section__select");

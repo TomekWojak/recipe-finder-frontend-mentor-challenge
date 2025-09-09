@@ -12,6 +12,7 @@ const browserSync = require("browser-sync").create();
 const reload = browserSync.reload;
 
 const paths = {
+	html: "./*.html",
 	sass: "./src/sass/**/*.scss",
 	js: "./src/js/**/*.js",
 	img: "./src/img/*",
@@ -73,7 +74,7 @@ function startBrowserSync(done) {
 
 function watchForChanges(done) {
 	watch(
-		[paths.sass, paths.js],
+		[paths.html, paths.sass, paths.js],
 		parallel(sassCompiler, javaScript)
 	).on("change", reload);
 	watch(paths.img, convertImages).on("change", reload);
