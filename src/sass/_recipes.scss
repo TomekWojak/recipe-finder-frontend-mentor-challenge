@@ -23,6 +23,7 @@
 		border: 1px solid $neutral300;
 		border-radius: $radius-10;
 		overflow: hidden;
+		box-shadow: 0 8px 16px rgba(22, 58, 52, 0.16);
 
 		&.hidden {
 			display: none;
@@ -99,6 +100,15 @@
 // article
 
 .recipe-article {
+	&.hidden {
+		display: none;
+		opacity: 0;
+		transform: translateY(50px);
+	}
+	&.page-active {
+		display: block;
+		animation: showPage 0.2s forwards;
+	}
 	&__content {
 		padding: $spacing-600 var(--inline-spacing);
 		color: $neutral900;
@@ -109,10 +119,16 @@
 		&-path {
 			font-size: 1.8rem;
 			font-weight: $semi-bold;
-			color: rgba(22, 58, 52, 0.6);
 		}
 		&-page {
+			text-decoration: none;
 			margin-inline-end: 0.3em;
+			color: rgba(22, 58, 52, 0.6);
+			transition: color 0.3s;
+
+			&:hover {
+				color: rgba(22, 58, 52, 0.8);
+			}
 		}
 		&-recipe-name {
 			color: $neutral900;
@@ -295,8 +311,8 @@
 		&__img-box {
 			width: 50%;
 		}
-		&__text-box {
-			width: 50%;
+		&__img-box {
+			width: 45%;
 		}
 	}
 }

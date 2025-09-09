@@ -41,11 +41,16 @@ body {
 }
 .page-active {
 	display: block;
-	animation: showPage 0.5s forwards;
+	animation: showPage 0.35s forwards;
 }
 .wrapper {
 	width: min(100%, var(--wrapper-width));
 	margin: 0 auto;
+}
+a {
+	text-decoration: none;
+	display: inline-block;
+	width: fit-content;
 }
 .text {
 	margin-block-start: 0.8em;
@@ -132,33 +137,48 @@ body {
 		overflow: hidden;
 	}
 	&__links-mobile-li {
-		padding: $spacing-150 $spacing-200;
-		font-size: 1.8rem;
-		color: #293241;
-		font-weight: $semi-bold;
-		cursor: pointer;
+		a {
+			width: 100%;
+			height: 100%;
+			color: #293241;
+			padding: $spacing-150 $spacing-200;
+			font-size: 1.8rem;
+			font-weight: $semi-bold;
+		}
 
-		&:first-child {
+		&:first-child a {
 			padding: $spacing-250 $spacing-200 $spacing-150;
 		}
-		&:last-child {
-			padding-block-end: $spacing-250;
-		}
 	}
-	&__links-mobile-btn {
-		width: 100%;
-		padding: $spacing-150 $spacing-200;
-		border-radius: $radius-10;
-		border: none;
-		background-color: $neutral900;
-		color: $neutral0;
-		font-size: 2rem;
-		font-weight: $bold;
-		cursor: pointer;
-	}
+}
+a.nav__links-mobile-btn {
+	display: block;
+	width: calc(100% - $spacing-400);
+	padding: $spacing-150 $spacing-200;
+	margin-inline: auto;
+	margin-block-start: $spacing-150;
+	margin-block-end: $spacing-100;
+	border-radius: $radius-10;
+	border: none;
+	background-color: #163a34;
+	color: #fff;
+	font-size: 2rem;
+	font-weight: 700;
+	text-align: center;
+	cursor: pointer;
 }
 
 .footer {
+	&.hidden {
+		display: none;
+		opacity: 0;
+		transform: translateY(50px);
+	}
+	&.page-active {
+		display: block;
+		animation: showPage 0.35s forwards;
+	}
+
 	&__content {
 		display: flex;
 		padding: $spacing-400 var(--inline-spacing) $spacing-250;
@@ -265,6 +285,10 @@ body {
 			border-radius: $radius-4;
 			border: 2px solid transparent;
 			cursor: pointer;
+
+			a {
+				color: #293241;
+			}
 
 			&.active::before {
 				transform: scale(1);

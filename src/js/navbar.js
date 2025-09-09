@@ -24,16 +24,6 @@ export const initNavbar = (desktopLinks, headerToggler, mobileNav) => {
 			closeNav();
 		}
 	});
-
-	const handleDesktopLinks = (link) => {
-		desktopLinks.forEach((link) => link.classList.remove("active"));
-		link.classList.add("active");
-	};
-	desktopLinks.forEach((link) =>
-		link.addEventListener("click", () => {
-			handleDesktopLinks(link);
-		})
-	);
 	window.addEventListener("click", (e) => {
 		const isExpanded = headerToggler.getAttribute("aria-expanded");
 		if (

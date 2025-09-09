@@ -1,10 +1,10 @@
 import { initNavbar } from "./navbar.min.js";
 import { createRecipe, createRecipeArticle } from "./recipes.min.js";
-
 document.addEventListener("DOMContentLoaded", function () {
 	const desktopLinks = document.querySelectorAll(".nav__links-desktop-li");
 	const headerToggler = document.querySelector(".header__toggler");
 	const mobileNav = document.querySelector(".nav__links-mobile");
+	const footer = document.querySelector(".footer");
 
 	const filterControls = document.querySelector(".recipes-section__controls");
 	const allSelections = document.querySelectorAll(".recipes-section__select");
@@ -15,7 +15,10 @@ document.addEventListener("DOMContentLoaded", function () {
 	const btns = [filterCookTimeBtn, filterPrepTimeBtn];
 	const selectLabels = document.querySelectorAll(".recipes-section__label");
 	const selectClearBtns = document.querySelectorAll(".clear");
+	const allPages = document.querySelectorAll(".page[data-section]");
 	const recipesBox = document.querySelector(".recipes-section__recipes-box");
+	const navLinksDesktop = document.querySelector(".nav__links-desktop");
+
 	const RECIPES_DATA = "/data.json";
 
 	const searchEngine = document.querySelector(
@@ -26,33 +29,20 @@ document.addEventListener("DOMContentLoaded", function () {
 
 	initNavbar(desktopLinks, headerToggler, mobileNav);
 
-	let isRendered;
-	const handlePages = (e) => {
-		const element = e.target.closest("[data-page]");
+	const params = new URLSearchParams(window.location.search);
 
-		if (!element) return;
-		const allPages = document.querySelectorAll(".page[data-section]");
-
-		const btnData = element.dataset.page;
+	const handlePagesAndLinks = (urlParam) => {
 		const pageToShow = document.querySelector(
-			`.page[data-section="${btnData}"]`
+			`.page[data-section="${urlParam}"]`
 		);
-
-		if (btnData === "recipes") {
-			renderRecipes();
-		}
-
-		if (!pageToShow) return;
-
 		allPages.forEach((page) => page.classList.remove("page-active"));
 		pageToShow.classList.add("page-active");
-		checkIfRecipeBtn(e);
+
+		handleDesktopLinks(urlParam);
 	};
 
 	// render pages
 	const renderRecipes = async () => {
-		if (isRendered) return;
-
 		try {
 			const response = await fetch(RECIPES_DATA);
 
@@ -75,14 +65,54 @@ document.addEventListener("DOMContentLoaded", function () {
 		} catch (error) {
 			console.error("Error:", error);
 		}
-
-		isRendered = true;
 	};
+	const handleDesktopLinks = (urlParam) => {
+		desktopLinks.forEach((link) => link.classList.remove("active"));
+		const activeLink = navLinksDesktop.querySelector(
+			`[data-page='${urlParam}']`
+		);
+		activeLink.classList.add("active");
+	};
+	const loadPage = () => {
+		const pageName = window.location.search.startsWith("?")
+			? window.location.search.slice(1)
+			: null;
+
+		if (window.location.search.includes("recipeId=")) {
+			const recipeId = new URLSearchParams(params).get("recipeId");
+			fetch(RECIPES_DATA)
+				.then((res) => res.json())
+				.then((data) => {
+					articleContent.parentElement.classList.add("page-active");
+					allPages.forEach((page) => page.classList.remove("page-active"));
+					desktopLinks.forEach((link) => link.classList.remove("active"));
+					data.forEach((recipe) => {
+						createRecipeArticle(recipe, recipeId, articleContent);
+					});
+				});
+			footer.style.borderTop = "1px solid rgb(208, 220, 217)";
+		} else if (pageName) {
+			handlePagesAndLinks(pageName);
+			footer.style.border = "none";
+
+			if (pageName === "recipes") {
+				renderRecipes();
+				footer.style.borderTop = "1px solid rgb(208, 220, 217)";
+			}
+		} else {
+			navLinksDesktop
+				.querySelector("[data-page='home']")
+				.classList.add("active");
+			handlePagesAndLinks("home");
+			footer.style.border = "none";
+		}
+		footer.classList.add("page-active");
+	};
+	loadPage();
 	const showArticle = (e) => {
 		const btnName = e.target.dataset.pageName;
 		const btnId = e.target.dataset.recipeId;
 
-		const allPages = document.querySelectorAll(".page[data-section]");
 		const pageToShow = document.querySelector(
 			`.page[data-section="${btnName}"]`
 		);
@@ -92,7 +122,7 @@ document.addEventListener("DOMContentLoaded", function () {
 		allPages.forEach((page) => page.classList.remove("page-active"));
 		pageToShow.classList.add("page-active");
 
-		return parseInt(btnId);
+		return btnId;
 	};
 	// handle filters
 	let selectedPrepValue;
@@ -126,6 +156,7 @@ document.addEventListener("DOMContentLoaded", function () {
 		});
 		checkIfNotValidFilter();
 	};
+
 	const checkIfRecipeBtn = (e) => {
 		if (e.target.matches(".nav-btn")) {
 			const btnId = e.target.dataset.page;
@@ -270,9 +301,9 @@ document.addEventListener("DOMContentLoaded", function () {
 			hideAllSelect(hideSelection);
 		}
 	});
-	document.body.addEventListener("click", (e) => {
-		handlePages(e);
-	});
+	// document.body.addEventListener("click", (e) => {
+	// 	handlePages(e);
+	// });
 	searchEngine.addEventListener("keydown", (e) => {
 		if (e.key === "Enter") {
 			hideAllSelect(hideSelection);

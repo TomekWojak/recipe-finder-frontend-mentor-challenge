@@ -31,11 +31,11 @@ export const createRecipe = ({
 	]);
 	const recipePrep = createElement("span", ["recipes-section__recipe-prep"]);
 	const recipeCook = createElement("span", ["recipes-section__recipe-cook"]);
-	const viewRecipeBtn = createElement("button", [
-		"recipes-section__view-recipe",
-	]);
+	const viewRecipeBtn = createElement("a", ["recipes-section__view-recipe"], {
+		href: `?recipeId=${slug}`,
+	});
 
-	viewRecipeBtn.dataset.recipeId = id;
+	viewRecipeBtn.dataset.recipeId = slug;
 	viewRecipeBtn.dataset.pageName = "article";
 	recipePrep.dataset.prepTime = prepMinutes;
 	recipeCook.dataset.cookTime = cookMinutes;
@@ -69,7 +69,6 @@ export const createRecipe = ({
 export const createRecipeArticle = (
 	{
 		title,
-		id,
 		slug,
 		overview,
 		servings,
@@ -82,15 +81,18 @@ export const createRecipeArticle = (
 	recipeToShow,
 	parentBox
 ) => {
-	if (recipeToShow !== id) return;
+	if (recipeToShow !== slug) return;
+	parentBox.innerHTML = "";
 	// creating elements
 	const breadcrumbsBox = createElement("div", ["recipe-article__breadcrumbs"]);
 	const breadcrumbsPath = createElement("p", [
 		"recipe-article__breadcrumbs-path",
 	]);
-	const breadcrumbsPage = createElement("span", [
-		"recipe-article__breadcrumbs-page",
-	]);
+	const breadcrumbsPage = createElement(
+		"a",
+		["recipe-article__breadcrumbs-page"],
+		{ href: "?recipes" }
+	);
 	const breadcrumbsName = createElement("span", [
 		"recipe-article__breadcrumbs-recipe-name",
 	]);
@@ -143,14 +145,14 @@ export const createRecipeArticle = (
                     loading="lazy" alt="">${instruction}`;
 		articleInstructionsList.append(articleInstruction);
 	});
-
+	const articleDivider = createElement("hr", ["recipe-article__divider"]);
 	// end of creating elements
 
 	// adding content to elements
-	breadcrumbsName.textContent = title;
-	breadcrumbsPage.textContent = "Recipes";
+	breadcrumbsName.textContent = `${title}`;
+	breadcrumbsPage.textContent = "Recipes /";
 
-	breadcrumbsPath.innerHTML = `${breadcrumbsPage.textContent} / ${breadcrumbsName.textContent}`;
+	breadcrumbsPath.append(breadcrumbsPage, breadcrumbsName);
 
 	articleTitle.textContent = title;
 	articleText.textContent = overview;
@@ -185,7 +187,7 @@ export const createRecipeArticle = (
 
 	articleBox.append(articleImgBox, articleTextBox);
 
-	parentBox.append(breadcrumbsBox, articleBox);
+	parentBox.append(breadcrumbsBox, articleBox, articleDivider);
 	// end of append
 };
 
