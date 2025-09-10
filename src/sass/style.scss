@@ -198,6 +198,15 @@ a.nav__links-mobile-btn {
 	}
 }
 
+@media (prefers-reduced-motion: reduce) {
+	*,
+	*::before,
+	*::after {
+		animation: none !important;
+		transition: none !important;
+	}
+}
+
 @media (768px <= width) {
 	:root {
 		--inline-spacing: 3.2rem;
