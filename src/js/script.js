@@ -1,5 +1,10 @@
 import { initNavbar } from "./navbar.min.js";
-import { createRecipe, createRecipeArticle } from "./recipes.min.js";
+import {
+	createRecipe,
+	createRecipeArticle,
+	createRestRecipes,
+	createElement,
+} from "./recipes.min.js";
 document.addEventListener("DOMContentLoaded", function () {
 	const desktopLinks = document.querySelectorAll(".nav__links-desktop-li");
 	const headerToggler = document.querySelector(".header__toggler");
@@ -53,15 +58,6 @@ document.addEventListener("DOMContentLoaded", function () {
 			data.forEach((recipe) => {
 				recipesBox.append(createRecipe(recipe));
 			});
-
-			recipesBox.addEventListener("click", (e) => {
-				if (e.target.matches(".recipes-section__view-recipe")) {
-					const recipeToShow = showArticle(e);
-					data.forEach((recipe) => {
-						createRecipeArticle(recipe, recipeToShow, articleContent);
-					});
-				}
-			});
 		} catch (error) {
 			console.error("Error:", error);
 		}
@@ -83,12 +79,16 @@ document.addEventListener("DOMContentLoaded", function () {
 			fetch(RECIPES_DATA)
 				.then((res) => res.json())
 				.then((data) => {
+					let restRecipes;
+
 					articleContent.parentElement.classList.add("page-active");
 					allPages.forEach((page) => page.classList.remove("page-active"));
 					desktopLinks.forEach((link) => link.classList.remove("active"));
 					data.forEach((recipe) => {
 						createRecipeArticle(recipe, recipeId, articleContent);
+						restRecipes = createRestRecipes(recipe, recipeId);
 					});
+					articleContent.append(createRestRecipesBox(restRecipes));
 				});
 			footer.style.borderTop = "1px solid rgb(208, 220, 217)";
 		} else if (pageName) {
@@ -109,6 +109,40 @@ document.addEventListener("DOMContentLoaded", function () {
 		footer.classList.add("page-active");
 	};
 	loadPage();
+
+	const showRestRecipes = (restRecipesArr, parentBox) => {
+		const usedIndexes = new Set();
+
+		for (let i = 0; i < 3; i++) {
+			let index;
+			do {
+				index = Math.floor(Math.random() * restRecipesArr.length);
+			} while (usedIndexes.has(index));
+
+			usedIndexes.add(index);
+
+			let arrElement = restRecipesArr[index];
+			parentBox.append(arrElement);
+		}
+	};
+	const createRestRecipesBox = (restRecipesArr) => {
+		const moreRecipesTitle = createElement("h5", [
+			"recipe-article-more__title",
+		]);
+		const recipesBox = createElement("div", [
+			"recipe-article-more__recipes-box",
+		]);
+		const moreRecipesBox = createElement("div", ["recipe-article-more__box"]);
+
+		moreRecipesTitle.textContent = "More recipes";
+
+		recipesBox.append(moreRecipesTitle, moreRecipesBox);
+
+		showRestRecipes(restRecipesArr, moreRecipesBox);
+
+		return recipesBox;
+	};
+
 	const showArticle = (e) => {
 		const btnName = e.target.dataset.pageName;
 		const btnId = e.target.dataset.recipeId;

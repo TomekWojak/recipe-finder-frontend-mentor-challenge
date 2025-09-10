@@ -36,7 +36,6 @@ body {
 }
 .page {
 	opacity: 0;
-	transform: translateY(50px);
 	display: none;
 }
 .page-active {
@@ -172,7 +171,6 @@ a.nav__links-mobile-btn {
 	&.hidden {
 		display: none;
 		opacity: 0;
-		transform: translateY(50px);
 	}
 	&.page-active {
 		display: block;
@@ -328,11 +326,9 @@ a.nav__links-mobile-btn {
 @keyframes showPage {
 	from {
 		opacity: 0;
-		transform: translateY(50px);
 	}
 	to {
 		opacity: 1;
-		transform: translateY(0);
 	}
 }
 @keyframes opacity {

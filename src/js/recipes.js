@@ -1,3 +1,4 @@
+let restRecipes = [];
 export const createRecipe = ({
 	title,
 	slug,
@@ -62,7 +63,6 @@ export const createRecipe = ({
 	recipeBody.append(recipeTitle, recipeText, recipeInfo, viewRecipeBtn);
 
 	recipe.append(imgBox, recipeBody);
-
 	return recipe;
 };
 
@@ -79,7 +79,8 @@ export const createRecipeArticle = (
 		image: { small, large },
 	},
 	recipeToShow,
-	parentBox
+	parentBox,
+	urlParam
 ) => {
 	if (recipeToShow !== slug) return;
 	parentBox.innerHTML = "";
@@ -186,12 +187,50 @@ export const createRecipeArticle = (
 	);
 
 	articleBox.append(articleImgBox, articleTextBox);
-
 	parentBox.append(breadcrumbsBox, articleBox, articleDivider);
 	// end of append
 };
+export const createRestRecipes = (
+	{
+		title,
+		slug,
+		overview,
+		servings,
+		prepMinutes,
+		cookMinutes,
+		ingredients,
+		instructions,
+		image: { small, large },
+	},
+	recipeToShow
+) => {
+	if (slug !== recipeToShow) {
+		const recipe = createRecipe({
+			title,
+			slug,
+			overview,
+			servings,
+			prepMinutes,
+			cookMinutes,
+			ingredients,
+			instructions,
+			image: { small, large },
+		});
+		restRecipes.push(recipe);
+	}
+	return restRecipes;
+};
+// const handleRestRecipes = (recipesArr, urlParam, parentBox) => {
+// 	const recipeId = urlParam.get('recipeId')
 
-const createElement = (element, classes = [], attributes = {}) => {
+// 	recipeArr.forEach(recipe => {
+
+// 	})
+
+
+// };
+
+export const createElement = (element, classes = [], attributes = {}) => {
 	const el = document.createElement(element);
 
 	classes.forEach((className) => el.classList.add(className));
@@ -202,3 +241,9 @@ const createElement = (element, classes = [], attributes = {}) => {
 
 	return el;
 };
+
+// stwórz tytuł
+// stwórz boxa z resztą przepisów
+// wykonaj funkcję filtrującą
+// dodaj tytuł i box do parentBox
+// dodaj 3 przepisy do boxa
