@@ -213,6 +213,18 @@ a.nav__links-mobile-btn {
 	}
 	.header {
 		padding: $spacing-400 var(--inline-spacing) $spacing-250;
+
+		&__logo {
+			img {
+				width: 240px;
+				height: auto;
+			}
+			&:focus-visible {
+				outline: 2px solid $neutral900;
+				outline-offset: 3px;
+				border-radius: $radius-10;
+			}
+		}
 	}
 	.nav {
 		&__links-mobile-btn {
@@ -239,6 +251,14 @@ a.nav__links-mobile-btn {
 
 			&:hover {
 				opacity: 0.7;
+			}
+
+			a {
+				&:focus-visible {
+					opacity: 0.7;
+					border: none;
+					outline: none;
+				}
 			}
 		}
 	}
@@ -294,7 +314,12 @@ a.nav__links-mobile-btn {
 			cursor: pointer;
 
 			a {
+				padding: 0.1em;
 				color: #293241;
+
+				&:focus-visible {
+					border-color: $neutral900;
+				}
 			}
 
 			&.active::before {
@@ -314,9 +339,6 @@ a.nav__links-mobile-btn {
 			}
 			&:hover::before {
 				transform: scale(1);
-			}
-			&:focus-visible {
-				border-color: $neutral900;
 			}
 		}
 	}

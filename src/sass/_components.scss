@@ -26,8 +26,13 @@
 		@include homeBtn;
 
 		display: block;
+
 		&:hover {
 			background-color: $neutral800;
+		}
+		&:focus-visible {
+			outline: 2px solid $neutral900;
+			outline-offset: 3px;
 		}
 	}
 }
