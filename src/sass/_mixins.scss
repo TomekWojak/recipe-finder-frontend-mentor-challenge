@@ -13,7 +13,7 @@
 	z-index: -1;
 }
 @mixin homeBtn {
-	margin-block-start: 1.6em;
+	margin-block-start: $spacing-200;
 	padding: $spacing-200 $spacing-400;
 	background-color: $neutral900;
 	font-weight: $bold;

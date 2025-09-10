@@ -52,7 +52,7 @@ a {
 	width: fit-content;
 }
 .text {
-	margin-block-start: 0.8em;
+	margin-block-start: $spacing-100;
 	font-size: 2rem;
 	line-height: $lh-150;
 	font-weight: $medium;
@@ -182,7 +182,7 @@ a.nav__links-mobile-btn {
 		padding: $spacing-400 var(--inline-spacing) $spacing-250;
 		flex-direction: column;
 		align-items: center;
-		gap: 2.4rem;
+		gap: $spacing-300;
 		color: $neutral900;
 	}
 
@@ -190,7 +190,7 @@ a.nav__links-mobile-btn {
 		list-style: none;
 		display: flex;
 		align-items: center;
-		gap: 2.4rem;
+		gap: $spacing-300;
 	}
 	&__text {
 		font-size: 1.6rem;
@@ -273,7 +273,7 @@ a.nav__links-mobile-btn {
 		}
 		&__links-desktop {
 			display: flex;
-			gap: 4rem;
+			gap: $spacing-500;
 		}
 		&__links-desktop-li {
 			position: relative;

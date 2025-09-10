@@ -6,14 +6,14 @@
 	justify-content: center;
 	align-items: center;
 	height: 30rem;
-	font-size: 4rem;
+	font-size: 2.6rem;
 	color: $neutral800;
 }
 
 .home-section,
 .about-section {
 	&__footer {
-		padding: $spacing-1000 var(--inline-spacing) 0;
+		padding: $spacing-800 var(--inline-spacing) 0;
 	}
 	&__footer-box {
 		text-align: center;
@@ -22,13 +22,18 @@
 		border-radius: $radius-16;
 	}
 	&__footer-btn {
+		margin: calc($spacing-200 + 0.1rem) auto 0;
 		@include homeBtn;
 
 		display: block;
-		margin: 1.7em auto 0;
 		&:hover {
 			background-color: $neutral800;
 		}
+	}
+}
+.about-section {
+	&__footer {
+		padding: 0 var(--inline-spacing);
 	}
 }
 
@@ -47,7 +52,7 @@
 		background-color: $neutral0;
 		font-size: 1.8rem;
 		font-weight: $semi-bold;
-		gap: 0.8rem;
+		gap: $spacing-100;
 		cursor: pointer;
 		transition: border-color 0.3s;
 
@@ -119,13 +124,14 @@
 			display: inline-flex;
 			justify-content: center;
 			align-items: center;
-			margin-inline-end: 0.8rem;
+			margin-inline-end: $spacing-100;
 			vertical-align: middle;
 			width: 16px;
 			height: 16px;
 			border: 1px solid $neutral400;
 			border-radius: $radius-full;
 			transition: opacity 0.3s, box-shadow 0.3s;
+			pointer-events: none;
 
 			&::after {
 				content: "";
@@ -152,7 +158,7 @@
 	}
 	&__search-engine {
 		display: block;
-		margin-block-start: 1.2rem;
+		margin-block-start: $spacing-150;
 		padding: $spacing-125 0 $spacing-125 $spacing-500;
 		width: 100%;
 		font-size: 1.8rem;
@@ -196,14 +202,14 @@ input[data-cook-time]:checked + .recipes-section__label .checkbox::after {
 	display: block;
 }
 .max-cook-time-btn {
-	margin-block-start: 1.2rem;
+	margin-block-start: $spacing-150;
 }
 @media (700px <= width) {
 	.recipes-section {
 		&__controls {
 			display: flex;
 			align-items: center;
-			gap: 1.2rem;
+			gap: $spacing-150;
 		}
 		&__search-engine,
 		.max-cook-time-btn {
@@ -223,6 +229,10 @@ input[data-cook-time]:checked + .recipes-section__label .checkbox::after {
 	}
 }
 @media (768px <= width) {
+	.error-visible {
+		font-size: 4rem;
+	}
+
 	.home-section,
 	.about-section {
 		&__footer {

@@ -113,6 +113,10 @@
 	.home-section {
 		&__content {
 			padding: $spacing-1000 var(--inline-spacing);
+
+			&--top {
+				padding: $spacing-1000 var(--inline-spacing) 0;
+			}
 		}
 
 		&__img {
@@ -130,7 +134,6 @@
 				@include orangeUnderline(0.5rem, 1);
 			}
 		}
-
 	}
 }
 @media (800px <= width) {
@@ -145,6 +148,10 @@
 		text-align: center;
 		&__content {
 			padding: $spacing-1200 var(--inline-spacing);
+
+			&--top {
+				padding: $spacing-1200 var(--inline-spacing) 0;
+			}
 		}
 		&__text {
 			margin: 0.8em auto 0;

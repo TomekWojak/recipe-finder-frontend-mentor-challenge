@@ -38,12 +38,12 @@
 			list-style: none;
 			display: flex;
 			flex-direction: column;
-			gap: 2.4rem;
+			gap: $spacing-300;
 		}
 		&__item {
 			display: flex;
 			align-items: flex-start;
-			gap: 2rem;
+			gap: $spacing-250;
 
 			img {
 				flex-shrink: 0;
@@ -82,7 +82,7 @@
 				padding: $spacing-1000 var(--inline-spacing);
 			}
 			&__list {
-				gap: 3.2rem;
+				gap: $spacing-400;
 			}
 		}
 		// new section
@@ -98,7 +98,7 @@
 		&__box {
 			display: flex;
 			align-items: center;
-			gap: 4rem;
+			gap: $spacing-500;
 		}
 		&__img {
 			margin: 0;
@@ -128,12 +128,12 @@
 				display: flex;
 				align-items: flex-start;
 				padding: $spacing-1200 var(--inline-spacing);
-				gap: 5rem;
+				gap: calc($spacing-600 + 0.2rem);
 			}
 			&__list {
 				width: 100%;
 				margin: 0;
-				gap: 4.8rem;
+				gap: $spacing-600;
 			}
 			&__subtitle {
 				width: 60%;
@@ -159,7 +159,7 @@
 			padding: $spacing-1200 var(--inline-spacing);
 		}
 		&__box {
-			gap: 6.4rem;
+			gap: $spacing-800;
 		}
 		&__box-text {
 			width: 80%;
@@ -175,7 +175,7 @@
 				display: flex;
 				align-items: flex-start;
 				padding: $spacing-1200 var(--inline-spacing);
-				gap: 6.4rem;
+				gap: $spacing-800;
 			}
 			&__list {
 				width: 85%;
@@ -200,7 +200,7 @@
 	.about-section {
 		&--bottom {
 			&__box {
-				gap: 6.4rem;
+				gap: $spacing-800;
 			}
 			&__text-box {
 				width: 55%;
