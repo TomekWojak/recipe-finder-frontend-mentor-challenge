@@ -24,6 +24,13 @@ document.addEventListener("DOMContentLoaded", function () {
 	const recipesBox = document.querySelector(".recipes-section__recipes-box");
 	const navLinksDesktop = document.querySelector(".nav__links-desktop");
 
+	const recipeArtcle = document.querySelector(".recipe-article");
+
+	const recipesLoadingBox = recipesBox.querySelector(".loading-box");
+	const articleLoadingBox = recipeArtcle.querySelector(".loading-box");
+
+	const restRecipesAmount = 3;
+
 	const RECIPES_DATA = "/data.json";
 
 	const searchEngine = document.querySelector(
@@ -48,6 +55,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
 	// render pages
 	const renderRecipes = async () => {
+		showLoader(recipesLoadingBox);
 		try {
 			const response = await fetch(RECIPES_DATA);
 
@@ -60,7 +68,15 @@ document.addEventListener("DOMContentLoaded", function () {
 			});
 		} catch (error) {
 			console.error("Error:", error);
+		} finally {
+			hideLoader(recipesLoadingBox);
 		}
+	};
+	const hideLoader = (loader) => {
+		loader.classList.add("hidden");
+	};
+	const showLoader = (loader) => {
+		loader.classList.remove("hidden");
 	};
 	const handleDesktopLinks = (urlParam) => {
 		desktopLinks.forEach((link) => link.classList.remove("active"));
@@ -75,6 +91,7 @@ document.addEventListener("DOMContentLoaded", function () {
 			: null;
 
 		if (window.location.search.includes("recipeId=")) {
+			showLoader(articleLoadingBox);
 			const recipeId = new URLSearchParams(params).get("recipeId");
 			try {
 				const response = await fetch(RECIPES_DATA);
@@ -99,6 +116,8 @@ document.addEventListener("DOMContentLoaded", function () {
 				footer.style.borderTop = "1px solid rgb(208, 220, 217)";
 			} catch (error) {
 				console.error("Error:", error);
+			} finally {
+				hideLoader(articleLoadingBox);
 			}
 		} else if (pageName) {
 			handlePagesAndLinks(pageName);
@@ -123,7 +142,7 @@ document.addEventListener("DOMContentLoaded", function () {
 	const showRestRecipes = (restRecipesArr, parentBox) => {
 		const usedIndexes = new Set();
 
-		for (let i = 0; i < 3; i++) {
+		for (let i = 0; i < restRecipesAmount; i++) {
 			let index;
 			do {
 				index = Math.floor(Math.random() * restRecipesArr.length);

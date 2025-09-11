@@ -10,6 +10,7 @@
 		margin-block-start: $spacing-600;
 	}
 	&__recipes-box {
+		position: relative;
 		margin-block-start: 2.4rem;
 		display: grid;
 		grid-template-columns: 1fr;
@@ -100,6 +101,9 @@
 // article
 
 .recipe-article {
+	.loading-area {
+		top: 40%;
+	}
 	&.hidden {
 		display: none;
 		opacity: 0;
