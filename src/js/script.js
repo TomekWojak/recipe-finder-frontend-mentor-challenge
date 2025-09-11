@@ -24,9 +24,9 @@ document.addEventListener("DOMContentLoaded", function () {
 	const recipesBox = document.querySelector(".recipes-section__recipes-box");
 	const navLinksDesktop = document.querySelector(".nav__links-desktop");
 
-	const recipeArtcle = document.querySelector(".recipe-article");
-
 	const recipesLoadingBox = recipesBox.querySelector(".loading-box");
+
+	const recipeArtcle = document.querySelector(".recipe-article");
 	const articleLoadingBox = recipeArtcle.querySelector(".loading-box");
 
 	const restRecipesAmount = 3;
@@ -93,6 +93,11 @@ document.addEventListener("DOMContentLoaded", function () {
 		if (window.location.search.includes("recipeId=")) {
 			showLoader(articleLoadingBox);
 			const recipeId = new URLSearchParams(params).get("recipeId");
+
+			articleContent.parentElement.classList.add("page-active");
+			allPages.forEach((page) => page.classList.remove("page-active"));
+			desktopLinks.forEach((link) => link.classList.remove("active"));
+
 			try {
 				const response = await fetch(RECIPES_DATA);
 
@@ -102,10 +107,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
 				const data = await response.json();
 				let restRecipes;
-
-				articleContent.parentElement.classList.add("page-active");
-				allPages.forEach((page) => page.classList.remove("page-active"));
-				desktopLinks.forEach((link) => link.classList.remove("active"));
 
 				data.forEach((recipe) => {
 					createRecipeArticle(recipe, recipeId, articleContent);
