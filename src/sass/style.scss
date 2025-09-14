@@ -204,7 +204,14 @@ a.nav__links-mobile-btn {
 	*::after {
 		animation: none !important;
 		transition: none !important;
+	}
+	.page,
+	.footer,
+	.recipe-article {
 		opacity: 1 !important;
+	}
+	.loading-box {
+		display: none;
 	}
 }
 
